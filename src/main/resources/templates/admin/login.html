@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head th:replace="client/part/head :: head"></head>
+<head>admin login</head>
 
 <body>
 <header id="header" th:replace="client/part/header :: header"></header>
@@ -27,7 +27,7 @@
     </p>
 </div>
 
-<form th:action="@{/login}" method="post">
+<form th:action="@{/admin/login}" method="post">
 
     <div><label> User Name : <input type="text" name="username"/> </label></div>
 
@@ -36,7 +36,7 @@
     <div><input type="submit" value="Sign In"/></div>
 
 </form>
-    <footer id="footer" th:replace="client/part/footer :: footer"></footer>
+    <footer id="footer" th:replace="admin/part/footer :: footer"></footer>
 </body>
 
 </html>

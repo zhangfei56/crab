@@ -1,8 +1,7 @@
-package cn.nicky.crab.config;
+package cn.nicky.crab.security;
 
-import cn.nicky.crab.entity.SUser;
-import cn.nicky.crab.entity.SecurityUser;
-import cn.nicky.crab.service.SUserService;
+import cn.nicky.crab.model.po.User;
+import cn.nicky.crab.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,13 +13,13 @@ import java.util.Collection;
 
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired  //数据库服务类
-    private SUserService suserService;//code7
+    private UserService suserService;//code7
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         //SUser对应数据库中的用户表，是最终存储用户和密码的表，可自定义
         //本例使用SUser中的email作为用户名:
-        SUser user = suserService.findUserByEmail(userName); //code8
+        User user = suserService.findUserByPhoneNumber(userName); //code8
 
         if (user == null) {
 
