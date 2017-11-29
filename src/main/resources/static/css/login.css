@@ -1,0 +1,130 @@
+.header-inner{
+    height:40px;
+    line-height:40px;
+    background: #ffffff;
+    border-bottom:1px solid #dcdcdc;
+    padding:0 40px;
+}
+.outer{
+    float:left;
+}
+.inner{
+    float: right;
+}
+.inner span{
+    color:#ff4200;
+}
+.outer ul li{
+    float: left;
+    padding: 0 10px;
+}
+.outer ul li .logo{
+    display: inline-block;
+    height: 30px;
+    width: 95px;
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    vertical-align: -9px;
+}
+.logo_img{
+    width:1200px;
+    margin:30px auto;
+}
+
+.logo_img a{
+    width:160px;
+    height:50px;
+    display: inline-block;
+    vertical-align: 24px;
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-indent: -9999px;
+}
+.logo_img span{
+    font-size: 24px;
+    color:#333;
+}
+.login_body{
+    height: 440px;
+    background-color: #e1dede;
+}
+.login_center{
+    width:1200px;
+    margin:0 auto;
+}
+.login_center .m_img{
+    width: 381px;
+    height: 316px;
+    float: left;
+    background: url("../img/login.png");
+    margin: 62px 130px;
+}
+.login_form{
+    float: left;
+    width:330px;
+    height: 380px;
+    background:#fff;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #ccc;
+    padding:40px 26px;
+    margin:30px;
+}
+.login_form h2{
+    font-size: 20px;
+    text-align: center;
+    height: 50px;
+}
+.login_form form p{
+    height:54px;
+    line-height:54px;
+    position: relative;
+}
+.forgot_password{
+    height:40px;
+    text-align: right;
+    line-height: 30px;
+}
+.login_form form p:after{
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 13px;
+    width: 20px;
+    height: 21px;
+}
+.login_form .user_name:after{
+    background: url("../img/user_name.png");
+    background-size: 100%;
+}
+.login_form .passwords:after{
+    background: url("../img/password.png");
+    background-size: 100%;
+}
+.login_form form input{
+    height:32px;
+    border:1px solid #dcdcdc;
+    border-radius: 20px;
+    width: 100%;
+    background: #fff;
+    padding-left: 40px;
+}
+.login_form form .sub_icon input{
+    padding: 0;
+    background:#ff7b33;
+    font-size: 16px;
+    color:#ffffff;
+    height: 38px;
+    cursor: pointer;
+}
+.footer{
+    background: #454241;
+    color:#fefefe;
+    height: 80px;
+}
+.footer p{
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+}

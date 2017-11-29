@@ -2,21 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 
 <body>
-<header id="header" th:fragment="heaher">
+<header id="header" th:fragment="heaher" class="top_nav">
     <div id="header-main" class="header-inner">
         <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">crab</span>
-            </a>
             <nav id="main-nav">
-
-                <a class="main-nav-link" href="/">主页</a>
-
-                <a class="main-nav-link" href="/about/me">关于我</a>
-
-           <!--     <a class="main-nav-link" href="/thymeleaf">thymeleaf翻译</a>-->
+                <ul class="m_clear">
+                    <li><a class="main-nav-link" href="/"><span class="logo"></span>主页</a></li>
+                    <li><a href="/client/vouchers">券</a></li>
+                    <li><a class="main-nav-link" href="/about/me">关于我</a></li>
+                    <li><a class="" href="/client/user"></a></li>
+                </ul>
             </nav>
+        </div>
+        <div class="inner">
+            <a class="login" href="/">登录</a>  |  <a class="out_login" href="/">退出</a>
         </div>
     </div>
 

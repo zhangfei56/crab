@@ -26,7 +26,7 @@ public class User{
     @Column
     private String phoneNumber;
 
-    @Column
+    @Column(columnDefinition="tinyint default 0")
     private boolean markForDelete;
 
     @Column(columnDefinition="tinyint default 0")
@@ -40,6 +40,9 @@ public class User{
 
     @Column
     private String headPic;
+
+    @Column(name=" image_code", columnDefinition="Blob")
+    private byte[] imageCode;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name = "UserRoleMapper", joinColumns ={@JoinColumn(name = "userId", referencedColumnName = "id")},
@@ -60,6 +63,14 @@ public class User{
        this.password = password;
 
        this.createDate = createDate;
+    }
+
+    public byte[] getImageCode() {
+        return imageCode;
+    }
+
+    public void setImageCode(byte[] imageCode) {
+        this.imageCode = imageCode;
     }
 
     public List<Role> getRoles() {

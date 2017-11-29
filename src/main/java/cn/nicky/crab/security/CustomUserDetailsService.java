@@ -3,13 +3,16 @@ package cn.nicky.crab.security;
 import cn.nicky.crab.model.po.User;
 import cn.nicky.crab.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired  //数据库服务类
@@ -29,8 +32,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // SecurityUser实现UserDetails并将SUser的Email映射为username
         SecurityUser securityUser = new SecurityUser(user);
-        Collection<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+//        Collection<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+//        authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         return securityUser; //code9
 
     }

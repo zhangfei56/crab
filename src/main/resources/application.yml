@@ -5,8 +5,11 @@ spring:
     username: dbuser
     password: abc123_123
     driver-class-name: com.mysql.jdbc.Driver
+
   thymeleaf:
     mode: HTML5
+    cache: false
+    content-type: text/html
   jpa:
     properties:
       hibernate:

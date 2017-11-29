@@ -97,7 +97,6 @@ public class QRCodeFactory {
             width=height=size[0];
         }
 
-
         Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
         // 指定纠错等级,纠错级别（L 7%、M 15%、Q 25%、H 30%）
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
