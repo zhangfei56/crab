@@ -11,6 +11,7 @@
 
 </head>
 <head th:replace="client/part/head :: head"></head>
+<script type="text/javascript" th:src="@{/js/client/voucher.js}"/>
 
 <body>
 <header id="header" th:replace="client/part/header :: header"></header>
@@ -19,22 +20,24 @@
     <table>
         <thead>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>券号：</td>
+                <td>规格：</td>
+                <td>创建日期：</td>
+                <td>状态：</td>
+                <td><input type="checkbox" id="control_check" onclick="toggleCheck()"/><button>生成图片</button></td>
             </tr>
         </thead>
         <tbody>
             <tr th:each="voucher:${vouchers.getContent()}">
-                <td th:text="${voucher.userId}"></td>
-                <td></td>
-                <td></td>
-
+                <td th:text="${voucher.identityCode}"></td>
+                <td th:text="${voucher.voucherCategory.detail}"></td>
+                <td th:text="${voucher.createDateTime}"></td>
+                <td th:text="${voucher.status}"></td>
+                <td><input type="checkbox" name="voucher_check"/></td>
             </tr>
         </tbody>
     </table>
 </div>
-This is voucher list page!
 </body>
 
 </html>

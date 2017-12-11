@@ -1,15 +1,13 @@
-$(function(){
-    sendMessage("/client/voucherCategory", "get", voucherCategorySuccessCallback, function (error) {
-        console.log(error);
-    }, null)
-});
-
-function voucherCategorySuccessCallback(data) {
-    var categories = JSON.parse(data);
-    categories.forEach(function(category,index,array){
-        var option = $("<option>").val(category.id).text(category.detail);
-
-        $("#category").append(option);
-
+function toggleCheck(){
+    var checked = $("#control_check")[0].checked;
+    var voucherChecks = document.getElementsByName("voucher_check");
+    voucherChecks.forEach(function(val, index, array){
+        val.checked = checked;
     });
+}
+
+function generatePic(){
+    var voucherChecks = document.getElementsByName("voucher_check");
+
+
 }

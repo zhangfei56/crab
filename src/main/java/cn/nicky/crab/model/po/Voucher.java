@@ -1,9 +1,6 @@
 package cn.nicky.crab.model.po;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -18,11 +15,15 @@ public class Voucher {
     @Column
     private Integer userId;
 
-    @Column
-    private Integer voucherCategoryId;
+//    @Column
+//    private Integer voucherCategoryId;
+
+    @OneToOne
+    @JoinColumn
+    private VoucherCategory voucherCategory;
 
     @Column
-    private Integer identityNumber;
+    private String identityCode;
 
     @Column
     private Date createDateTime;
@@ -58,20 +59,20 @@ public class Voucher {
         this.userId = userId;
     }
 
-    public Integer getVoucherCategoryId() {
-        return voucherCategoryId;
+//    public Integer getVoucherCategoryId() {
+//        return voucherCategoryId;
+//    }
+//
+//    public void setVoucherCategoryId(Integer voucherCategoryId) {
+//        this.voucherCategoryId = voucherCategoryId;
+//    }
+
+    public String getIdentityCode() {
+        return identityCode;
     }
 
-    public void setVoucherCategoryId(Integer voucherCategoryId) {
-        this.voucherCategoryId = voucherCategoryId;
-    }
-
-    public Integer getIdentityNumber() {
-        return identityNumber;
-    }
-
-    public void setIdentityNumber(Integer identityNumber) {
-        this.identityNumber = identityNumber;
+    public void setIdentityCode(String identityCode) {
+        this.identityCode = identityCode;
     }
 
     public Date getCreateDateTime() {
@@ -120,5 +121,13 @@ public class Voucher {
 
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+
+    public VoucherCategory getVoucherCategory() {
+        return voucherCategory;
+    }
+
+    public void setVoucherCategory(VoucherCategory voucherCategory) {
+        this.voucherCategory = voucherCategory;
     }
 }
