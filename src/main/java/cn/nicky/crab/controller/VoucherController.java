@@ -1,5 +1,6 @@
 package cn.nicky.crab.controller;
 
+import cn.nicky.crab.model.po.Template;
 import cn.nicky.crab.model.po.Voucher;
 import cn.nicky.crab.security.SecurityUser;
 import cn.nicky.crab.service.impl.VoucherService;
@@ -39,10 +40,20 @@ public class VoucherController {
 
     @ResponseBody
     @RequestMapping(value="/voucher/addVoucher", method = RequestMethod.POST)
-    public String addVoucher(@RequestParam Integer total, @RequestParam Integer categoryId, @RequestParam Date deadlineDate){
+    public String addVoucher(@RequestParam Integer total, @RequestParam Integer categoryId, @RequestParam Date deadlineDate) {
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         voucherService.addVoucher(securityUser.getId(), total, categoryId, deadlineDate);
         return "success";
     }
+
+    @RequestMapping(value = "/voucher/template")
+    public String showTemplate(Model model){
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Template template = voucherService.findTemplate(securityUser.getId());
+        model.addAttribute("template", template);
+        return "client/template";
+    }
+
+
 }

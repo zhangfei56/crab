@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<head>
+
+    <meta charset="UTF-8"/>
+
+    <title>用户管理</title>
+
+</head>
+<head th:replace="client/part/head :: head"></head>
+<script type="text/javascript" th:src="@{/js/client/user.js}"/>
+
+<body>
+    <header id="header" th:replace="client/part/header :: header"></header>
+
+    <div>
+        <label>图片</label>
+        <input name="userImage" id="userImage" type="file" />
+        <button onclick="updateUser()">upload</button>
+    </div>
+</body>
+
+</html>

@@ -1,6 +1,8 @@
 package cn.nicky.crab.controller;
 
 import cn.nicky.crab.model.po.User;
+import cn.nicky.crab.repository.TemplateRepository;
+import cn.nicky.crab.security.SecurityUser;
 import cn.nicky.crab.service.impl.UserService;
 import cn.nicky.crab.util.QRCodeFactory;
 import com.google.zxing.WriterException;
@@ -11,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -80,7 +83,6 @@ public class UserController {
         }else {
             return "client/login";
         }
-
     }
 
     @RequestMapping("/")
@@ -91,6 +93,44 @@ public class UserController {
         }else {
             return "welcome";
         }
+    }
+
+    @RequestMapping("/client/user")
+    public String findUser() {
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return "client/user";
+    }
+
+    @RequestMapping(value="/client/updateUser", method = RequestMethod.POST)
+    @ResponseBody
+    public String updateUser(@RequestParam(value = "file") MultipartFile file){
+        if (file.isEmpty()) {
+            return "failed";
+        }
+        // 获取文件名
+        String fileName = file.getOriginalFilename();
+        // 获取文件的后缀名
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));
+        // 文件上传后的路径
+        String filePath = "E://test//";
+        // 解决中文问题，liunx下中文路径，图片显示问题
+        // fileName = UUID.randomUUID() + suffixName;
+        File dest = new File(filePath + fileName);
+        // 检测是否存在目录
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+        try {
+            file.transferTo(dest);
+            return "success";
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "failed";
+
     }
 
     @RequestMapping("/index")
