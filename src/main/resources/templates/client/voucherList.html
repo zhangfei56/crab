@@ -11,12 +11,17 @@
 
 </head>
 <head th:replace="client/part/head :: head"></head>
+<script type="text/javascript" th:src="@{/js/lib/FileSaver.js}"/>
+<script type="text/javascript" th:src="@{/js/lib/jszip.min.js}"/>
+<script type="text/javascript" th:src="@{/js/lib/qrcode.js}"/>
 <script type="text/javascript" th:src="@{/js/client/voucher.js}"/>
 
 <body>
 <header id="header" th:replace="client/part/header :: header"></header>
 <div>
     <a href="/client/voucher/addVoucher">添加券</a>
+    <img id="default_template" src="/img/template.jpg" style="display: none"/>
+    <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
     <table>
         <thead>
             <tr>
@@ -24,7 +29,8 @@
                 <td>规格：</td>
                 <td>创建日期：</td>
                 <td>状态：</td>
-                <td><input type="checkbox" id="control_check" onclick="toggleCheck()"/><button>生成图片</button></td>
+                <td>二维码</td>
+                <td><input type="checkbox" id="control_check" onclick="toggleCheck()"/><button onclick="generatePic()">生成图片</button></td>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +40,7 @@
                 <td th:text="${voucher.createDateTime}"></td>
                 <td th:text="${voucher.status}"></td>
                 <td><input type="checkbox" name="voucher_check"/></td>
+                <td class="qrcode_td"><div th:id="'qrcode_'+${voucher.identityCode}"></div></td>
             </tr>
         </tbody>
     </table>
