@@ -10,5 +10,5 @@ import java.util.List;
  * Created by zhang on 2017/11/13.
  */
 public interface IVoucherService {
-    Page<Voucher> findByUserId(Integer userId, Pageable pageable);
+    Page<Voucher> findByUserId(Integer userId, Pageable pageable, Integer status);
 }

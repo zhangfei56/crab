@@ -20,9 +20,14 @@ public interface VoucherRepository extends JpaRepository <Voucher, Integer>{
 
     Page<Voucher> findByUserId(Integer userId, Pageable pageable);
 
+    Page<Voucher> findByUserIdAndStatus(Integer userId, Integer status, Pageable pageable);
+
     Page<Voucher> findByUserIdOrderByCreateDateTimeDesc(Integer userId, Pageable pageable);
 
+    Page<Voucher> findByUserIdAndStatusOrderByCreateDateTimeDesc(Integer userId,Integer status, Pageable pageable);
 
     Voucher findByIdentityCode(String code);
+
+
 
 }

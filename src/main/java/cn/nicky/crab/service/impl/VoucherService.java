@@ -37,12 +37,22 @@ public class VoucherService implements IVoucherService {
 
 
     @Override
-    public Page<Voucher> findByUserId(Integer userId, Pageable pageable) {
+    public Page<Voucher> findByUserId(Integer userId, Pageable pageable, Integer status) {
         Page<Voucher> v = null;
         if(pageable.getSort() == null){
-            v = voucherRepository.findByUserIdOrderByCreateDateTimeDesc(userId, pageable);
+            if(status == -1){
+               // voucherRepository.findByUserIdOrderByCreateDateTimeDesc(userId, pageable);
+                v = voucherRepository.findByUserId(userId, pageable);
+            }else {
+                v = voucherRepository.findByUserIdAndStatusOrderByCreateDateTimeDesc(userId,status, pageable);
+            }
         }else {
-            v = voucherRepository.findByUserId(userId, pageable);
+            if(status==null){
+                v = voucherRepository.findByUserId(userId, pageable);
+            }else {
+                v = voucherRepository.findByUserIdAndStatus(userId,status, pageable);
+
+            }
         }
 
         return v;
@@ -96,4 +106,9 @@ public class VoucherService implements IVoucherService {
         return sb.toString();
     }
 
+    public void updateTemplate(Template template){
+        Template exist = templateRepository.findOne(template.getId());
+        template.setUserId(exist.getUserId());
+        templateRepository.save(template);
+    }
 }

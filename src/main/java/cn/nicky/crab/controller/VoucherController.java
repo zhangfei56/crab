@@ -25,11 +25,12 @@ public class VoucherController {
     private VoucherService voucherService;
 
     @RequestMapping(value = "/vouchers", method = RequestMethod.GET)
-    public String findVouchers(Model model, Pageable pager){
+    public String findVouchers(Model model, Integer status, Pageable pager){
 
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Page<Voucher> voucherPage = voucherService.findByUserId(securityUser.getId(), pager);
+        Page<Voucher> voucherPage = voucherService.findByUserId(securityUser.getId(), pager, status);
         model.addAttribute("vouchers", voucherPage);
+        model.addAttribute("status", status);
         return "client/voucherList";
     }
 
@@ -53,6 +54,21 @@ public class VoucherController {
         Template template = voucherService.findTemplate(securityUser.getId());
         model.addAttribute("template", template);
         return "client/template";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/voucher/json/template")
+    public Template getTemplate(){
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Template template = voucherService.findTemplate(securityUser.getId());
+        return template;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/voucher/json/template", method = RequestMethod.PUT)
+    public String updateTemplate(Template template){
+        voucherService.updateTemplate(template);
+        return "success";
     }
 
 
