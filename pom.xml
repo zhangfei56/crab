@@ -68,6 +68,11 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.31</version>
         </dependency>
+        <dependency>
+            <groupId>com.aliyun.api.gateway</groupId>
+            <artifactId>sdk-core-java</artifactId>
+            <version>1.0.4</version>
+        </dependency>
     </dependencies>
 
     <!-- Package as an executable jar -->

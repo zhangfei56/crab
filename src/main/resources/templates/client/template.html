@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>模板</title>
+</head>
+<head th:replace="client/part/head :: head"></head>
+
+<body>
+<header id="header" th:replace="client/part/header :: header"></header>
+<script type="text/javascript" th:src="@{/js/client/template.js}"/>
+
+<div>
+    <input id="template_id" type="hidden" th:value="${template.id}"/>
+    <div id="company_name">
+        <label>公司名称：</label>
+        <input type="text" id="company_name_text" th:value="${template.companyName}"/>
+    </div>
+
+    <div id="contact">
+        <label>联系人:</label>
+        <input id="contact_input" th:value="${template.contact}"/>
+    </div>
+    <div id="phone_number">
+        <label>联系电话:</label>
+        <input id="phone_number_input" th:value="${template.phoneNumber}"/>
+    </div>
+    <div id="expiation">
+        <label>解释权:</label>
+        <input id="owner_input" th:value="${template.owner}"/>
+    </div>
+<button onclick="saveTemplate()">save </button>
+
+    <!--<div id="companyImage">-->
+        <!--<label>模板图片：</label>-->
+        <!--<input id="companyImageFile" type="file"/>-->
+        <!--<img id="prepareImage" style="height: 200px; width: 200px"/>-->
+    <!--</div>-->
+    <img id="default_template" src="/img/template.jpg" style="display: none"/>
+    <img id="show_template" style="height: auto; width: 1000px"/>
+    <div style="height: 200px">
+
+    </div>
+</div>
+
+</body>
+
+</html>
