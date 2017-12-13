@@ -1,9 +1,12 @@
+.top_nav{
+    background: #ffffff;
+    border-bottom:1px solid #dcdcdc;
+}
 .header-inner{
     height:40px;
     line-height:40px;
-    background: #ffffff;
-    border-bottom:1px solid #dcdcdc;
-    padding:0 40px;
+    width:1200px;
+    margin:0 auto;
 }
 .outer{
     float:left;
@@ -18,29 +21,32 @@
     float: left;
     padding: 0 10px;
 }
+
 .outer ul li .logo{
     display: inline-block;
-    height: 30px;
-    width: 95px;
+    height: 23px;
+    width: 72px;
     background-image: url("../img/logo.png");
     background-repeat: no-repeat;
     background-size: 100%;
-    vertical-align: -9px;
+    vertical-align: -6px;
+    margin-right: 6px;
 }
 .logo_img{
     width:1200px;
-    margin:30px auto;
+    margin:25px auto;
 }
 
 .logo_img a{
     width:160px;
-    height:50px;
+    height:48px;
     display: inline-block;
     vertical-align: 24px;
     background-image: url("../img/logo.png");
     background-repeat: no-repeat;
     background-size: 100%;
     text-indent: -9999px;
+    margin-right: 20px;
 }
 .logo_img span{
     font-size: 24px;
@@ -108,6 +114,7 @@
     border-radius: 20px;
     width: 100%;
     background: #fff;
+    outline:none;
     padding-left: 40px;
 }
 .login_form form .sub_icon input{
@@ -118,13 +125,15 @@
     height: 38px;
     cursor: pointer;
 }
-.footer{
-    background: #454241;
-    color:#fefefe;
-    height: 80px;
+.login_form form .sub_icon input:hover{
+    background:#ff5a00;
 }
-.footer p{
-    height:40px;
-    line-height: 40px;
+.my_footer{
+    color:#666;
+    background:#fff;
+    padding-top:30px;
+    height:30px;
+    line-height: 30px;
     text-align: center;
+    font-size:12px;
 }

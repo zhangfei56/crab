@@ -2,20 +2,87 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
-<head>
-
-    <meta charset="UTF-8"/>
-
-    <title>Insert title here</title>
-
-</head>
 <head th:replace="client/part/head :: head"></head>
-
+<head>
+    <link rel="stylesheet" href="/css/index.css"/>
+</head>
 <body>
 <header id="header" th:replace="client/part/header :: header"></header>
+<div class="banner">
+    <div class="in_banner"><a href="" class="all_button">去试试</a></div>
+</div>
+<div class="introduce">
+    <h2 class="pub_tit1">Brief  <span>Introduction</span></h2>
+    <h3 class="pub_tit2"><p>系统简介</p></h3>
+    <h4 class="pub_tit3">香蟹汇礼券兑换系统是一套方便快捷，操作简单的在线管理系统。</h4>
+    <p class="intro_det">系统以数字化编码技术贯通，融合无线通信技术、互联网技术的在线管理系统，集供应商产品数据、消费者自助提货、经销商零售</p>
+    <p class="intro_det">管理为一体。通过编码在预售凭证上的延伸和对应，形成自助提货的依据。系统为消费者提供了手机二维码，可借助网络24小时无人值守自助提货。</p>
+    <div class="intro_icons">
+        <ul class="m_clear">
+            <li>
+                <p class="icon1"><span></span></p>
+                <h6>产品管理</h6>
+                <div class="icon_det trans">对产品继续数字化处理， 精准记录相关产品信息。</div>
+            </li>
+            <li>
+                <p class="icon2"><span></span></p>
+                <h6>卡券管理</h6>
+                <div class="icon_det trans">独具特色的卡券激活方式， 控制销售风险、规范管理。</div>
+            </li>
+            <li>
+                <p class="icon3"><span></span></p>
+                <h6>订单管理</h6>
+                <div class="icon_det trans">消费者每个成功提货申请都 将生成相应订单，随时处理。</div>
+            </li>
+            <li>
+                <p class="icon4"><span></span></p>
+                <h6>数据统计</h6>
+                <div class="icon_det trans">重要业务步骤产生的数据， 系统自动生成相关数据统计。</div>
+            </li>
+            <li>
+                <p class="icon5"><span></span></p>
+                <h6>物流追踪</h6>
+                <div class="icon_det trans">系统可自主追踪物流信息， 供消费者和商家即时查询。</div>
+            </li>
+            <li>
+                <p class="icon6"></p>
+                <h6>增值服务</h6>
+                <div class="icon_det trans">系统自动记录消费者提货信息， 便于积累客户，助力营销活动。</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="contact_us">
+    <h2 class="pub_tit1"><span>Contact</span> Us</h2>
+    <h3 class="pub_tit2"><p>联系我们</p></h3>
+    <p class="intro_det">如果您有任何意见想对我们说，可以通过下面的方式联系我们，</p>
+    <p class="intro_det">我们将非常乐意与您畅快交流，请留下您准确的联系方式，我们承诺对您的个人信息保密。</p>
+    <div class="contact_ways">
+        <div class="way1 pub_left">
+            <h2><span></span>在线留言</h2>
+            <form method="post">
+                <p class="your_name"><label for="your_name">尊称/Name：</label><input type="text" id="your_name" name="your_name" placeholder="请输入您的姓名"/></p>
+                <p class="your_email"><label for="your_email">邮件/Email：</label><input type="text" id="your_email" name="your_email" placeholder="请输入您的邮箱" /></p>
+                <p class="your_phone"><label for="your_phone">电话/Phone：</label><input type="text" id="your_phone" name="your_phone" placeholder="请输入您的联系电话" /></p>
+                <p class="your_message"><label for="your_message" style="vertical-align: top;">留言/Message：</label><textarea id="your_message" placeholder="您想说些什么..." ></textarea></p>
+                <p class="sub_button"><input type="submit" value="提交"/></p>
+            </form>
+        </div>
+        <div class="way2 pub_left">
+            <h2><span></span>联系我们</h2>
+            <p>地址/Add：上海市浦东新区张江高科</p>
+            <p>电话/Tel :  18606153627</p>
+            <p>网址/Url：www.xiangxh.com</p>
+            <p>邮件/Email：1311306430@qq.com</p>
+        </div>
+        <div class="way3 pub_left">
+            <h2><span></span>关注我们</h2>
+            <div class="my_code"></div>
+        </div>
+    </div>
+    <footer id="footer" th:replace="client/part/footer :: footer"></footer>
+</div>
 
-This is index page!
 </body>
 
 </html>

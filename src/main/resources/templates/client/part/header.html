@@ -2,23 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 
 <body>
-<header id="header" th:fragment="heaher" class="top_nav">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <nav id="main-nav">
-                <ul class="m_clear">
-                    <li><a class="main-nav-link" href="/"><span class="logo"></span>主页</a></li>
-                    <li><a href="/client/vouchers">券</a></li>
-                    <li><a class="main-nav-link" href="/about/me">关于我</a></li>
-                    <li><a class="" href="/client/user"></a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="inner">
-            <a class="login" href="/">登录</a>  |  <a class="out_login" href="/">退出</a>
-        </div>
+<header id="header" th:fragment="header">
+    <div class="pub_header">
+        <h1 class="pub_left "><a  href="/" class="logo">香蟹汇</a></h1>
+        <nav class="pub_right" id="main-nav">
+            <ul class="m_clear">
+                <li><a href="/index">首页</a></li>
+                <li><a href="/actions">操作流程</a></li>
+                <li><a href="vouchers">DIY提货券</a></li>
+                <li><a href="voucherList">我的订单</a></li>
+                <li><a href="user">账户设置</a></li>
+                <li><a href="users">退出</a></li>
+            </ul>
+        </nav>
     </div>
-
 </header>
+
 </body>
 </html>

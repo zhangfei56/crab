@@ -1,0 +1,217 @@
+body{
+    background:#f4f4f4;
+}
+.banner{
+    max-width:1920px;
+    height:450px;
+    margin:0 auto;
+    background: url("../img/banner.png") center center no-repeat;
+}
+.in_banner{
+    position:relative;
+    width:1200px;
+    margin:0 auto;
+}
+.banner .all_button{
+    position:absolute;
+    top: 288px;
+    left: 350px;
+}
+.introduce{
+    width:1200px;
+    margin:0 auto;
+    padding: 50px 0 30px;
+}
+.pub_tit1{
+    color:#188fd2;
+    font-size:36px;
+    font-family: 'Impact';
+    text-align: center;
+}
+.pub_tit1 span{
+    color:#777;
+}
+.pub_tit2{
+    line-height: 32px;
+    height: 18px;
+    border-bottom: 1px solid #dcdcdc;
+    width: 300px;
+    margin: 0 auto;
+    font-size: 18px;
+    text-align: center;
+}
+.pub_tit2 p{
+    padding: 0 20px;
+    background: #f4f4f4;
+    width: 118px;
+    margin: 0 auto;
+}
+.pub_tit3{
+    font-size:22px;
+    margin: 30px 0 10px;
+    text-align:center;
+}
+.intro_det{
+    text-align:center;
+    line-height:24px;
+}
+.intro_icons{
+    margin:20px auto 0;
+    width:924px;
+}
+.intro_icons ul li{
+    float:left;
+    width:154px;
+    height:180px;
+    text-align:center;
+    padding:25px 0;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+}
+.intro_icons ul li p{
+    height:85px;
+    padding-top:26px;
+    background:url(../img/icon1.png) center center no-repeat;
+    margin-bottom:16px;
+}
+.intro_icons ul li p span{
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-right: 1px solid #dcdcdc;
+}
+.intro_icons ul li .icon2{
+    background:url(../img/icon2.png) center center no-repeat;
+}
+.intro_icons ul li .icon3{
+    background:url(../img/icon3.png) center center no-repeat;
+}
+.intro_icons ul li .icon4{
+    background:url(../img/icon4.png) center center no-repeat;
+}
+.intro_icons ul li .icon5{
+    background:url(../img/icon5.png) center center no-repeat;
+}
+.intro_icons ul li .icon6{
+    background:url(../img/icon6.png) center center no-repeat;
+}
+.icon_det{
+    position:absolute;
+    z-index:99;
+    top:-180px;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.65);
+    color:#fff;
+    padding: 50px 16px;
+    line-height: 22px;
+}
+.intro_icons ul li:hover .icon_det{
+    top:0px;
+}
+.contact_us{
+    padding-top:50px;
+    background:url(../img/bottom.png) center center no-repeat;
+    color:#fff;
+}
+.contact_us .pub_tit2 p {
+    background: #0273b7;
+}
+.contact_us .pub_tit1{
+    color:#faaf46;
+}
+.contact_us .pub_tit1 span{
+    color:#fff;
+}
+.contact_us .pub_tit2{
+    border-bottom:1px solid #fff;
+    margin-bottom:30px;
+}
+.contact_ways{
+    height:300px;
+    width:1000px;
+    margin:26px auto 0;
+}
+.contact_ways h2{
+    font-size:16px;
+    margin-bottom:20px;
+}
+.contact_ways h2 span{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background:url(../img/email.png);
+    vertical-align: middle;
+    margin-right:6px;
+}
+.contact_ways .way2 span{
+    background:url(../img/our.png);
+}
+.contact_ways .way3 span{
+    background:url(../img/code.png);
+}
+.way1,.way2,.way3{
+    width:430px;
+    height:300px;
+    margin-right:50px;
+}
+.way1 p{
+    font-size:16px;
+    height:40px;
+    text-align:right;
+}
+.way1 .your_message{
+    height:98px;
+}
+.way1 p input,#your_message{
+    width:290px;
+    height:30px;
+    padding-left:10px;
+    border-radius:5px;
+    font-size:12px;
+    border:1px solid #fff;
+    background:rgba(0,0,0,.1);
+    color:#fff;
+}
+.way1 p #your_message{
+    height:76px;
+    padding: 3px 10px;
+    line-height:20px;
+    font-family:"微软雅黑";
+}
+.way1 p.sub_button input{
+    width:88px;
+    border-radius:15px;
+    margin-right:202px;
+    padding:0;
+    cursor:pointer;
+}
+.way1 p.sub_button input:hover{
+    background:rgba(0,0,0,.2);
+}
+.way1 p input::input-placeholder{color:#fff;}
+.way1 p input:-moz-placeholder{color:#fff;}
+.way1 p input::-moz-placeholder{color:#fff;}
+.way1 p input::-webkit-input-placeholder{color:#fff;}
+.way1 p input:-ms-input-placeholder{color:#fff;}
+.way1 p textarea::input-placeholder{color:#fff;}
+.way1 p textarea:-moz-placeholder{color:#fff;}
+.way1 p textarea::-moz-placeholder{color:#fff;}
+.way1 p textarea::-webkit-input-placeholder{color:#fff;}
+.way1 p textarea:-ms-input-placeholder{color:#fff;}
+.way2{
+    width:280px;
+}
+.contact_ways .way2 p{
+    font-size:16px;
+    height:30px;
+}
+.way3{
+    width:110px;
+}
+.my_code{
+    background:url(../img/my_code.png);
+    width:110px;
+    height:110px;
+}

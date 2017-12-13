@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 
-<body>
     <head th:fragment="head">
         <meta charset="utf-8"/>
         <title>阳澄湖大闸蟹</title>
         <link rel="stylesheet" href="/css/base.css"/>
-        <link rel="stylesheet" href="/css/login.css"/>
         <script type="text/javascript" th:src="@{/js/common/jquery.min.js}"/>
         <script type="text/javascript" th:src="@{/js/common/util.js}"/>
+        <script type="text/javascript" th:src="@{/js/client/tipbox.js}"/>
+        <!--<script type="text/javascript">-->
+            <!--var urlStr = location.href;-->
+            <!--var urlStatus = false;-->
+            <!--var list = $('#main-nav').children('a');-->
+            <!--list.each(function(){-->
+                <!--if((urlStr + '/').indexOf($(this).attr('rel'))> -1 && $(this).attr('rel')!=''){-->
+                    <!--$(this).addClass('cur9rent_list');-->
+                    <!--urlStatus = true;-->
+                <!--}else {-->
+                    <!--$(this).removeClass('current_list');-->
+                <!--}-->
+            <!--});-->
+            <!--if(!urlStatus){-->
+                <!--list.eq(0).addClass('current_list');-->
+            <!--}-->
+        <!--</script>-->
     </head>
-</body>
+
 </html>
