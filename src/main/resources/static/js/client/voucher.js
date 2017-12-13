@@ -17,9 +17,9 @@ $(function(){
     var status = $("#voucher_status_id").val();
     $("#voucher_status_select").val(status);
 
-//    $("#voucher_status_select").on("change", function(){
-//        window.location.href="/client/vouchers?status="+$("#voucher_status_select").val();
-//    });
+   $("#voucher_status_select").on("change", function(){
+       window.location.href="/client/vouchers?status="+$("#voucher_status_select").val();
+   });
 });
 var template={};
 function toggleCheck(){

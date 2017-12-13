@@ -38,11 +38,11 @@ public class VoucherService implements IVoucherService {
 
     @Override
     public Page<Voucher> findByUserId(Integer userId, Pageable pageable, Integer status) {
-        Page<Voucher> v = null;
+        Page<Voucher> v;
         if(pageable.getSort() == null){
             if(status == -1){
                // voucherRepository.findByUserIdOrderByCreateDateTimeDesc(userId, pageable);
-                v = voucherRepository.findByUserId(userId, pageable);
+                v = voucherRepository.findByUserIdOrderByCreateDateTimeDesc(userId, pageable);
             }else {
                 v = voucherRepository.findByUserIdAndStatusOrderByCreateDateTimeDesc(userId,status, pageable);
             }
