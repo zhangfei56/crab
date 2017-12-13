@@ -1,5 +1,5 @@
 $(function(){
-    $(".qrcode_td > div").each(function(index, val){
+    $(".qrcode_td").each(function(index, val){
         var id = val.id;
         var qrcode = new QRCode(val, {
             width : 100,
@@ -17,24 +17,23 @@ function toggleCheck(){
 }
 
 function generatePic(){
-    var voucherChecks = document.getElementsByName("voucher_check");
-    var qrcode = new QRCode(document.getElementById("qrcode"), {
-        width : 100,
-        height : 100
-    });
-    qrcode.makeCode("this is text");
-
-
-    var imgData = $("#qrcode img").attr("src");
-
+    var voucherChecks =  $("input[name='voucher_check']:checkbox:checked");
+    var default_template = document.getElementById("default_template");
     var zip = new JSZip();
     var img = zip.folder("images");
-    img.file("code.png", imgData, {base64: true});
+    voucherChecks.each(function (index, val) {
+        var qrimage = val.nextElementSibling.children[1];
+        var vouURI = drawMessage(default_template,"shanghai", "公蟹", new Date(), "zhang", "123", "fsdf", "fsd", qrimage);
+        var imgData = vouURI.split("data:image/png;base64,")[1];
+        img.file( val.nextElementSibling.id+".png", imgData, {base64: true});
+    })
+
     zip.generateAsync({type:"blob"})
     .then(function(content) {
         // see FileSaver.js
         saveAs(content, "example.zip");
     });
+
 }
 
 

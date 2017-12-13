@@ -29,7 +29,6 @@
                 <td>规格：</td>
                 <td>创建日期：</td>
                 <td>状态：</td>
-                <td>二维码</td>
                 <td><input type="checkbox" id="control_check" onclick="toggleCheck()"/><button onclick="generatePic()">生成图片</button></td>
             </tr>
         </thead>
@@ -39,8 +38,10 @@
                 <td th:text="${voucher.voucherCategory.detail}"></td>
                 <td th:text="${voucher.createDateTime}"></td>
                 <td th:text="${voucher.status}"></td>
-                <td><input type="checkbox" name="voucher_check"/></td>
-                <td class="qrcode_td"><div th:id="'qrcode_'+${voucher.identityCode}"></div></td>
+                <td>
+                    <input type="checkbox" name="voucher_check"/>
+                    <div class="qrcode_td" th:id="'qrcode_'+${voucher.identityCode}"></div>
+                </td>
             </tr>
         </tbody>
     </table>

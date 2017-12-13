@@ -33,6 +33,6 @@ function redraw(){
     var m_background_image=document.getElementById("default_template");
     var m_company_name = $("#company_name_text").val();
     var m_category_name = $("#category_name_input").val();
-    var img = drawMessage(m_background_image, m_company_name, m_category_name, new Date());
+    var img = drawMessage(m_background_image, m_company_name, m_category_name, new Date(), "zhang", "123", "fsdf", "fsd", null);
     $("#show_template").attr('src', img);
 }

@@ -71,7 +71,7 @@ function drawMessage(background_image,company_name, category_name, deadline, con
     ctx.fillText(company_name, 0.31*image_width, 0.19*image_height);
     ctx.fillText(category_name, 0.31*image_width, 0.28*image_height);
     ctx.fillText(contact, 0.31*image_width, 0.58*image_height);
-    ctx.drawImage(qr_image,10,10, qr_image.height, qr_image.width);
+    qr_image == undefined ? null: ctx.drawImage(qr_image,10,10, qr_image.height, qr_image.width);
 
     return canvas_default.toDataURL("image/png");
 }
