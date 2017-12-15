@@ -32,6 +32,7 @@ public class VoucherService implements IVoucherService {
     public enum VoucherStatusConstant {
         CREATEED,
         ORDERED,
+        RECEIVE,
         FINISHED
     }
 
@@ -110,5 +111,14 @@ public class VoucherService implements IVoucherService {
         Template exist = templateRepository.findOne(template.getId());
         template.setUserId(exist.getUserId());
         templateRepository.save(template);
+    }
+
+    public Voucher findByIdentityCode(String code){
+        return voucherRepository.findByIdentityCode(code);
+    }
+
+    public boolean checkVoucherNotOrder(String code){
+        Voucher voucher = voucherRepository.findByIdentityCode(code);
+        return voucher.getStatus()==0;
     }
 }

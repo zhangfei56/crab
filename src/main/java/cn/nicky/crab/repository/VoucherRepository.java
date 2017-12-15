@@ -5,10 +5,12 @@ import cn.nicky.crab.model.po.Voucher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,6 +30,9 @@ public interface VoucherRepository extends JpaRepository <Voucher, Integer>{
 
     Voucher findByIdentityCode(String code);
 
-
+    @Modifying
+    @Transactional
+    @Query(value = "update Voucher v set v.status = ?1 where v.identityCode = ?2")
+    int updateStatus(int status, String code);
 
 }

@@ -1,11 +1,8 @@
 package cn.nicky.crab.controller;
 
 import cn.nicky.crab.model.po.User;
-import cn.nicky.crab.repository.TemplateRepository;
 import cn.nicky.crab.security.SecurityUser;
 import cn.nicky.crab.service.impl.UserService;
-import cn.nicky.crab.util.QRCodeFactory;
-import com.google.zxing.WriterException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 @Controller

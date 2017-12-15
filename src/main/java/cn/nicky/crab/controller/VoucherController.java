@@ -26,7 +26,7 @@ public class VoucherController {
 
     @RequestMapping(value = "/vouchers", method = RequestMethod.GET)
     public String findVouchers(Model model, Integer status, Pageable pager){
-
+        status = null == status ? -1 : status;
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Page<Voucher> voucherPage = voucherService.findByUserId(securityUser.getId(), pager, status);
         model.addAttribute("vouchers", voucherPage);

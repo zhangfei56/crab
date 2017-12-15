@@ -15,9 +15,6 @@ public class Voucher {
     @Column
     private Integer userId;
 
-//    @Column
-//    private Integer voucherCategoryId;
-
     @OneToOne
     @JoinColumn
     private VoucherCategory voucherCategory;
@@ -34,14 +31,16 @@ public class Voucher {
     @Column
     private Integer status;
 
-    @Column
-    private String trackingNumber;
+    @OneToOne(mappedBy = "voucher")
+    private OrderForm orderForm;
 
-    @Column
-    private Integer courierCompanyId;
+    public OrderForm getOrderForm() {
+        return orderForm;
+    }
 
-    @Column
-    private Integer orderId;
+    public void setOrderForm(OrderForm orderForm) {
+        this.orderForm = orderForm;
+    }
 
     public Integer getId() {
         return id;
@@ -58,14 +57,6 @@ public class Voucher {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
-//    public Integer getVoucherCategoryId() {
-//        return voucherCategoryId;
-//    }
-//
-//    public void setVoucherCategoryId(Integer voucherCategoryId) {
-//        this.voucherCategoryId = voucherCategoryId;
-//    }
 
     public String getIdentityCode() {
         return identityCode;
@@ -97,30 +88,6 @@ public class Voucher {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public String getTrackingNumber() {
-        return trackingNumber;
-    }
-
-    public void setTrackingNumber(String trackingNumber) {
-        this.trackingNumber = trackingNumber;
-    }
-
-    public Integer getCourierCompanyId() {
-        return courierCompanyId;
-    }
-
-    public void setCourierCompanyId(Integer courierCompanyId) {
-        this.courierCompanyId = courierCompanyId;
-    }
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
     }
 
     public VoucherCategory getVoucherCategory() {

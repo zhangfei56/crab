@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+    <meta charset="UTF-8"/>
+
+    <title>券</title>
+
+</head>
+<head th:replace="client/part/head :: head"></head>
+
+
+<body>
+    <div>
+        <div th:if="${voucher.status == 0}">
+            <form th:action="@{/anyone/order}" method="post">
+                <div>
+                    <label>券号</label>
+                    <input type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
+                </div>
+                <div>
+                    <label>联系人:</label>
+                    <input type="text" name="contact"/>
+                </div>
+                <div>
+                    <label>电话号码:</label>
+                    <input type="text" name="phoneNumber"/>
+                </div>
+                <div>
+                    <label>地址:</label>
+                    <input type="text" name="address"/>
+                </div>
+                <div>
+                    <label>预计送达日期:</label>
+                    <input type="date" name="needDateTime"/>
+                </div>
+
+                <input type="submit" value="Submit" />
+            </form>
+
+        </div>
+
+        <div th:if="${voucher.status == 1}">
+            等待商家发货
+        </div>
+        <div th:if="${voucher.status == 3}">
+            订单完成
+        </div>
+    </div>
+</body>
+
+</html>

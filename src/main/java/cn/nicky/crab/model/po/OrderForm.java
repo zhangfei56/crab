@@ -1,9 +1,8 @@
 package cn.nicky.crab.model.po;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -19,13 +18,59 @@ public class OrderForm {
     private Date createDateTime;
 
     @Column
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date needDateTime;
+
+    @Column
     private String address;
+
+    @Column
+    private String contact;
 
     @Column
     private String phoneNumber;
 
     @Column
-    private String remark;
+    private String courierCompanyType;
+
+    @Column
+    private String trackingNumber;
+
+    @OneToOne
+    @JoinColumn
+    private Voucher voucher;
+
+    public String getTrackingNumber() {
+        return trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber) {
+        this.trackingNumber = trackingNumber;
+    }
+
+    public String getCourierCompanyType() {
+        return courierCompanyType;
+    }
+
+    public void setCourierCompanyType(String courierCompanyType) {
+        this.courierCompanyType = courierCompanyType;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Voucher getVoucher() {
+        return voucher;
+    }
+
+    public void setVoucher(Voucher voucher) {
+        this.voucher = voucher;
+    }
 
     public Integer getId() {
         return id;
@@ -59,11 +104,11 @@ public class OrderForm {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getRemark() {
-        return remark;
+    public Date getNeedDateTime() {
+        return needDateTime;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setNeedDateTime(Date needDateTime) {
+        this.needDateTime = needDateTime;
     }
 }

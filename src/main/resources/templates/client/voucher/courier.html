@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+    <meta charset="UTF-8"/>
+
+    <title>券</title>
+
+</head>
+<head th:replace="client/part/head :: head"></head>
+
+<script type="text/javascript" th:src="@{/js/client/courier.js}"/>
+
+<body>
+    <input id="identity_code" type="text" th:value="${voucher.identityCode}"/>
+</body>
+
+</html>
