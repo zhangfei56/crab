@@ -2,44 +2,47 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
+<head th:replace="client/part/head :: head"></head>
 <head>
 
     <meta charset="UTF-8"/>
 
     <title>添加券</title>
-
+    <link rel="stylesheet" href="/css/voucher.css"/>
+    <script type="text/javascript" th:src="@{/js/client/addVoucher.js}"/>
 </head>
-<head th:replace="client/part/head :: head"></head>
-
 <body>
 <header id="header" th:replace="client/part/header :: header"></header>
-<script type="text/javascript" th:src="@{/js/client/addVoucher.js}"/>
-
-<div>
-    <div>
-        <div class="">
-            <label> 类型: </label>
-            <select id="category">
-            </select>
+<div class="bg_box">
+    <h2 class="your_position"> >> 当前位置：添加提货券</h2>
+    <div class="bg_inbox">
+        <div class="bg_title_box">
+            <div class="bg_title pub_left">添加提货券</div>
+            <div class="pub_right">
+                <a href="/client/voucher/template" class="all_button">查看模板</a>
+            </div>
         </div>
-
-        <div>
-            <label>截至日期:</label>
-            <input type="date" id="voucherCreateDate"/>
+        <div class="all_form">
+            <p>
+                <label>类型：</label>
+                <select id="category" class="all_input">
+                </select>
+            </p>
+            <p>
+                <label>截至日期：</label>
+                <input type="date" id="voucherCreateDate" class="all_input"/>
+            </p>
+            <p>
+                <label>张数：</label>
+                <input type="number" id="voucherTotal" class="all_input"/>
+            </p>
+            <p>
+                <label></label>
+                <input type="button" value="提交" onclick="postVoucher()" class="all_button no_border_btn"/>
+            </p>
         </div>
-
-        <div>
-            <label>张数:</label>
-            <input type="number" id="voucherTotal" />
-
-        </div>
-
-
-        <div><input type="button" value="提交" onclick="postVoucher()"/></div>
     </div>
 </div>
-This is voucher list page!
 </body>
 
 </html>

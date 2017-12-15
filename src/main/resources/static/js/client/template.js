@@ -32,10 +32,10 @@ $(function () {
 function redraw(){
     var m_background_image=document.getElementById("default_template");
     var m_company_name = $("#company_name_text").val();
-    var m_contact = $("#contact").val();
-    var m_phone_number = $("#phone_number").val();
-    var m_owner = $("#expiation").val();
-    var img = drawMessage(m_background_image, m_company_name, undefined, new Date(), m_contact, m_phone_number, m_owner);
+    var m_contact = $("#contact_input").val();
+    var m_phone_number = $("#phone_number_input").val();
+    var m_address = $("#owner_input").val();
+    var img = drawMessage(m_background_image, m_company_name, undefined, undefined, m_contact, m_phone_number, m_address, undefined, undefined, undefined);
     $("#show_template").attr('src', img);
 }
 
