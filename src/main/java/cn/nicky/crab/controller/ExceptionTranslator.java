@@ -14,17 +14,17 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-//@ControllerAdvice
-//public class ExceptionTranslator {
-//
-//    public static final String DEFAULT_ERROR_VIEW = "403";
-//
-//    @ExceptionHandler(value = Exception.class)
-//    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-//        ModelAndView mav = new ModelAndView();
-//        mav.addObject("exception", e);
-//        mav.addObject("url", req.getRequestURL());
-//        mav.setViewName(DEFAULT_ERROR_VIEW);
-//        return mav;
-//    }
-//}
+@ControllerAdvice
+public class ExceptionTranslator {
+
+    public static final String DEFAULT_ERROR_VIEW = "403";
+
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exception", e);
+        mav.addObject("url", req.getRequestURL());
+        mav.setViewName(DEFAULT_ERROR_VIEW);
+        return mav;
+    }
+}

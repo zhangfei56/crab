@@ -43,15 +43,22 @@ public class OrderController {
     }
 
 
+    public String getOrders(Model model,Integer status, Pageable pageable){
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Page<OrderForm> orderForms = orderService.findOrders(securityUser.getId(), pageable);
+        model.addAttribute("orders", orderForms);
+        model.addAttribute("status", status);
+        return "/client/orderList";
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/anyone/order", method = RequestMethod.POST)
-    public String addOrder(@ModelAttribute OrderForm orderForm){
+    public String addOrder(OrderForm orderForm){
 
         if(!voucherService.checkVoucherNotOrder(orderForm.getVoucher().getIdentityCode()))
-            return "/client/voucher/voucherExist";
+            return "error";
         orderService.addOrder(orderForm);
-
-        return "redirect:/anyone/voucher/order/"+orderForm.getVoucher().getIdentityCode();
-
+        return "success";
     }
 
     @RequestMapping(value = "/anyone/voucher/order/{voucherCode}")

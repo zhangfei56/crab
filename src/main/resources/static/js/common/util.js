@@ -41,15 +41,9 @@ function sendFormdata(url, method, successCallback, failCallback, body){
 }
 
 function drawMessage(background_image,company_name, category_name, deadline, contact, phone_number, address, voucher_number, qr_image){
-    var year = "xxxx";
-    var month = "xx";
-    var day = "xx";
+    deadline = deadline == undefined ? new Date(): deadline;
+    deadline = deadline.Format("yyyy年MM月dd日");
 
-    if(deadline != undefined){
-        year = deadline.getFullYear();
-        month = deadline.getMonth()+1;
-        day =  deadline.getDate();
-    }
     company_name == undefined ? company_name="大闸蟹公司":company_name;
     category_name == undefined ? category_name="公蟹4只":category_name;
     contact == undefined ? contact="周XX":"("+contact+")";
@@ -69,13 +63,28 @@ function drawMessage(background_image,company_name, category_name, deadline, con
     ctx.fillStyle="#fff";
     ctx.fillText(company_name, 0.3*image_width, 0.17*image_height);
     ctx.fillText(category_name, 0.3*image_width, 0.26*image_height);
-    ctx.fillText(deadline, 0.28*image_width, 0.43*image_height);
+    ctx.fillText(deadline, 0.3*image_width, 0.43*image_height);
     ctx.fillText(contact, 0.45*image_width, 0.71*image_height);
     ctx.fillText(phone_number, 0.325*image_width, 0.71*image_height);
     ctx.fillText(address, 0.325*image_width, 0.805*image_height);
     ctx.font="40px 微软雅黑 ";
     ctx.fillText(voucher_number, 0.09*image_width, 0.885*image_height);
-    qr_image == undefined ? null: ctx.drawImage(qr_image,10,10, qr_image.height, qr_image.width);
-    ctx.fillText(qr_image, 0.83*image_width, 0.88*image_height);
+    qr_image == undefined ? null: ctx.drawImage(qr_image,0.826*image_width, 0.58*image_height, qr_image.height, qr_image.width);
     return canvas_default.toDataURL("image/png");
+}
+
+Date.prototype.Format = function (fmt) { //author: meizz
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
 }

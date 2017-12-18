@@ -2,8 +2,8 @@ $(function(){
     $(".qrcode_td").each(function(index, val){
         var id = val.id;
         var qrcode = new QRCode(val, {
-            width : 100,
-            height : 100
+            width : 210,
+            height : 210
         });
         qrcode.makeCode(id);
     });
@@ -36,10 +36,10 @@ function generatePic(){
     var zip = new JSZip();
     var img = zip.folder("images");
     voucherChecks.each(function (index, val) {
-        var qrimage = val.nextElementSibling.children[1];
-        var deadline = new Date(val.nextElementSibling.nextElementSibling.value);
-        var categoryName = val.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
-        var identityCode = val.nextElementSibling.nextElementSibling.nextElementSibling.value;
+        var qrimage = val.nextElementSibling.nextElementSibling.children[1];
+        var deadline = new Date(val.nextElementSibling.nextElementSibling.nextElementSibling.value);
+        var categoryName = val.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
+        var identityCode = val.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.value;
         var vouURI = drawMessage(default_template,template.companyName, categoryName, deadline, template.contact, template.phoneNumber, template.owner, identityCode, qrimage);
         var imgData = vouURI.split("data:image/png;base64,")[1];
         img.file( identityCode+".png", imgData, {base64: true});

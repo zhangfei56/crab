@@ -12,34 +12,33 @@
 </head>
 <head th:replace="client/part/head :: head"></head>
 
+<script type="text/javascript" th:src="@{/js/client/voucherOrder.js}"/>
 
 <body>
     <div>
         <div th:if="${voucher.status == 0}">
-            <form th:action="@{/anyone/order}" method="post">
                 <div>
                     <label>券号</label>
-                    <input type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
+                    <input id="code_input" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
                 </div>
                 <div>
                     <label>联系人:</label>
-                    <input type="text" name="contact"/>
+                    <input id="contact_input" type="text" name="contact"/>
                 </div>
                 <div>
                     <label>电话号码:</label>
-                    <input type="text" name="phoneNumber"/>
+                    <input id="phone_number_input" type="text" name="phoneNumber"/>
                 </div>
                 <div>
                     <label>地址:</label>
-                    <input type="text" name="address"/>
+                    <input id="address_input" type="text" name="address"/>
                 </div>
                 <div>
                     <label>预计送达日期:</label>
-                    <input type="date" name="needDateTime"/>
+                    <input id="need_date_input" type="date" name="needDateTime"/>
                 </div>
 
-                <input type="submit" value="Submit" />
-            </form>
+                <input type="submit" value="Submit" onclick="sendVoucherOrder()"/>
 
         </div>
 

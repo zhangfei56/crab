@@ -18,7 +18,6 @@ public class OrderForm {
     private Date createDateTime;
 
     @Column
-    @JsonFormat(pattern="yyyy-MM-dd")
     private Date needDateTime;
 
     @Column
