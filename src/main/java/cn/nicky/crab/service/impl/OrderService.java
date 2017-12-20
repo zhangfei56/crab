@@ -9,7 +9,9 @@ import cn.nicky.crab.util.SyncCourierApiClient;
 import com.alibaba.cloudapi.sdk.core.model.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -55,7 +57,15 @@ public class OrderService implements IOrderService {
         orderRepository.save(orderForm);
     }
 
-    public Page<OrderForm> findOrders(int userId, Pageable pageable){
-        return orderRepository.findByVoucher_UserId(userId, pageable);
+    public Page<OrderForm> findOrders(int userId, int status, Pageable pageable){
+        Sort sort = new Sort(Sort.Direction.DESC, "createDateTime");
+        PageRequest pageRequest = new PageRequest(pageable.getPageNumber(), pageable.getPageSize(), sort);
+        Page<OrderForm> orderFormPage= null;
+        if(status ==-1){
+            orderFormPage = orderRepository.findByVoucher_UserId(userId, pageRequest);
+        }else {
+            orderFormPage = orderRepository.findByVoucher_UserIdAndVoucher_status(userId, status, pageRequest);
+        }
+        return orderFormPage;
     }
 }

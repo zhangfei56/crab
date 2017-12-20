@@ -15,7 +15,7 @@ public interface OrderRepository extends JpaRepository <OrderForm, Integer>{
 
     Page<OrderForm> findByVoucher_UserId(int userId, Pageable pageable);
 
-
+    Page<OrderForm> findByVoucher_UserIdAndVoucher_status(int userId, int status, Pageable pageable);
 
 
 }

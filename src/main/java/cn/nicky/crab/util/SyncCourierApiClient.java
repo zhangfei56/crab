@@ -29,7 +29,6 @@ import com.alibaba.cloudapi.sdk.core.model.BuilderParams;
 @ThreadSafe
 public final class SyncCourierApiClient extends BaseApiClient {
     public final static String GROUP_HOST = "jisukdcx.market.alicloudapi.com";
-
     private SyncCourierApiClient(BuilderParams builderParams) {
         super(builderParams);
     }

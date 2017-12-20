@@ -26,11 +26,12 @@ public class OrderController {
 
     @Resource
     private VoucherService voucherService;
+
     @ResponseBody
     @RequestMapping(value = "/client/order/courierCompanies", method = RequestMethod.GET)
     public String findCourierCompanies(Model model, HttpServletResponse httpResponse){
         ApiResponse response = orderService.getCourierCompany();
-        String body=null;
+        String body="";
 
         httpResponse.setStatus(response.getStatusCode());
 
@@ -42,10 +43,10 @@ public class OrderController {
         return body;
     }
 
-
-    public String getOrders(Model model,Integer status, Pageable pageable){
+    @RequestMapping(value = "/client/orders", method = RequestMethod.GET)
+    public String getOrders(Model model, Integer status, Pageable pageable){
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Page<OrderForm> orderForms = orderService.findOrders(securityUser.getId(), pageable);
+        Page<OrderForm> orderForms = orderService.findOrders(securityUser.getId(),status, pageable);
         model.addAttribute("orders", orderForms);
         model.addAttribute("status", status);
         return "/client/orderList";
