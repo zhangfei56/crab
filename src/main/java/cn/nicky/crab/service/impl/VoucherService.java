@@ -1,7 +1,9 @@
 package cn.nicky.crab.service.impl;
 
+import cn.nicky.crab.model.po.CourierCompany;
 import cn.nicky.crab.model.po.Template;
 import cn.nicky.crab.model.po.Voucher;
+import cn.nicky.crab.repository.CourierCompanyRepository;
 import cn.nicky.crab.repository.TemplateRepository;
 import cn.nicky.crab.repository.VoucherCategoryRepository;
 import cn.nicky.crab.repository.VoucherRepository;
@@ -28,6 +30,8 @@ public class VoucherService implements IVoucherService {
 
     @Autowired
     private VoucherCategoryRepository voucherCategoryRepository;
+
+
 
     public enum VoucherStatusConstant {
         CREATEED,
@@ -78,6 +82,7 @@ public class VoucherService implements IVoucherService {
         voucherRepository.save(vouchers);
         return true;
     }
+
 
     private String generateIdentityCode(int length){
         StringBuilder sb=new StringBuilder();

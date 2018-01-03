@@ -19,8 +19,13 @@ public class CourierCompany {
     private String name;
 
     @Column
-    private String url;
+    private String type;
 
+    private String tel;
+
+    private String number;
+
+    private boolean common;
     public Integer getId() {
         return id;
     }
@@ -37,11 +42,35 @@ public class CourierCompany {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getType() {
+        return type;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public boolean isCommon() {
+        return common;
+    }
+
+    public void setCommon(boolean common) {
+        this.common = common;
     }
 }

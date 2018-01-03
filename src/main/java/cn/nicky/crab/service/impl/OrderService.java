@@ -1,7 +1,9 @@
 package cn.nicky.crab.service.impl;
 
+import cn.nicky.crab.model.po.CourierCompany;
 import cn.nicky.crab.model.po.OrderForm;
 import cn.nicky.crab.model.po.Voucher;
+import cn.nicky.crab.repository.CourierCompanyRepository;
 import cn.nicky.crab.repository.OrderRepository;
 import cn.nicky.crab.repository.VoucherRepository;
 import cn.nicky.crab.service.IOrderService;
@@ -15,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by zhang on 2017/11/13.
@@ -27,6 +30,9 @@ public class OrderService implements IOrderService {
 
     @Autowired
     private VoucherRepository voucherRepository;
+
+    @Autowired
+    private CourierCompanyRepository courierCompanyRepository;
 
     private SyncCourierApiClient courierApiClient;
 
@@ -67,5 +73,13 @@ public class OrderService implements IOrderService {
             orderFormPage = orderRepository.findByVoucher_UserIdAndVoucher_status(userId, status, pageRequest);
         }
         return orderFormPage;
+    }
+
+    public void addCourierCompany(List<CourierCompany> companies){
+        courierCompanyRepository.save(companies);
+    }
+
+    public List<CourierCompany> findCourierCompany(boolean common){
+        return courierCompanyRepository.findByCommon(common);
     }
 }
