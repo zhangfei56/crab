@@ -16,6 +16,8 @@
 
 <body>
     <div>
+        <input id="voucher_status" type="hidden" th:value="${voucher.status}"/>
+        <input id="identity_code" type="hidden" th:value="${voucher.identityCode}"/>
         <div th:if="${voucher.status == 0}">
                 <div>
                     <label>券号</label>
@@ -44,6 +46,15 @@
 
         <div th:if="${voucher.status == 1}">
             等待商家发货
+        </div>
+        <div th:if="${voucher.status == 2}">
+            <p>快递查询</p>
+            <table id="show_express_table">
+                <tbody>
+
+                </tbody>
+            </table>
+
         </div>
         <div th:if="${voucher.status == 3}">
             订单完成

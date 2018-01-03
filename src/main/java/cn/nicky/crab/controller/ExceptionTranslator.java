@@ -1,5 +1,7 @@
 package cn.nicky.crab.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -17,7 +19,8 @@ import java.util.List;
 @ControllerAdvice
 public class ExceptionTranslator {
 
-    public static final String DEFAULT_ERROR_VIEW = "403";
+    public static final String DEFAULT_ERROR_VIEW = "error";
+    Logger logger = LoggerFactory.getLogger(ExceptionTranslator.class);
 
     @ExceptionHandler(value = Exception.class)
     public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
@@ -25,6 +28,7 @@ public class ExceptionTranslator {
         mav.addObject("exception", e);
         mav.addObject("url", req.getRequestURL());
         mav.setViewName(DEFAULT_ERROR_VIEW);
+        logger.error(e.getMessage());
         return mav;
     }
 }

@@ -7,6 +7,7 @@
     <body>
         <h1 th:inline="text">抱歉!</h1>
         <p>您没有权限访问该页面</p>
+        <p th:text="${exception}">
         <p><a th:href="@{/hellouser}">前往普通用户界面</a></p>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="登出"/>
