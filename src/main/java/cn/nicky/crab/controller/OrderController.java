@@ -33,13 +33,25 @@ public class OrderController {
     private VoucherService voucherService;
 
     @ResponseBody
-    @RequestMapping(value = "/client/courierCompany", method = RequestMethod.GET)
+    @RequestMapping(value = "/client/json/courierCompany", method = RequestMethod.GET)
     public String findCourierCompanies(boolean common){
         List<CourierCompany> courierCompanies = orderService.findCourierCompany(common);
         return JSON.toJSONString(courierCompanies);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/client/json/delivery", method = RequestMethod.GET)
+    public String deliveryGoods(String identityCode, String type, String trackingNumber){
+        orderService.deliveryGoods(identityCode, type, trackingNumber);
+        return "success";
+    }
 
+    @ResponseBody
+    @RequestMapping(value = "/client/json/finish/order", method = RequestMethod.GET)
+    public String finishDelivery(String identityCode){
+        orderService.finishOrder(identityCode);
+        return "success";
+    }
 
     @RequestMapping(value = "/client/orders", method = RequestMethod.GET)
     public String getOrders(Model model, Integer status, Pageable pageable){

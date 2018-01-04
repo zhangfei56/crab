@@ -82,4 +82,17 @@ public class OrderService implements IOrderService {
     public List<CourierCompany> findCourierCompany(boolean common){
         return courierCompanyRepository.findByCommon(common);
     }
+
+    public void deliveryGoods(String identityCode, String type, String trackingNumber){
+        Voucher voucher = voucherRepository.findByIdentityCode(identityCode);
+        OrderForm orderForm = voucher.getOrderForm();
+        orderForm.setTrackingNumber(trackingNumber);
+        orderForm.setCourierCompanyType(type);
+        orderRepository.save(orderForm);
+        voucherRepository.updateStatus(2, identityCode);
+    }
+
+    public void finishOrder(String identityCode){
+        voucherRepository.updateStatus(3, identityCode);
+    }
 }

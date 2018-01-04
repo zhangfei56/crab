@@ -21,10 +21,13 @@ public class CourierCompany {
     @Column
     private String type;
 
+    @Column
     private String tel;
 
+    @Column
     private String number;
 
+    @Column
     private boolean common;
     public Integer getId() {
         return id;
