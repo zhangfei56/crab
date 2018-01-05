@@ -1,13 +1,13 @@
-function updateUser(){
-    var fd = new FormData();
-    fd.append("file", $("#userImage").get(0).files[0]);
-    sendFormdata("/client/updateUser", "post", updateUserSuccessCallback, function (error) {
+function updatePassword(){
+    var user={};
+    user.oldPassword = $("#oldPassword").val();
+    user.newPassword = $("#newPassword").val();
+    sendMessage("/client/user/updatePassword", "post", updatePasswordSuccessCallback, function (error) {
         console.log(error);
-    }, fd)
+    }, user);
 }
 
 
-function updateUserSuccessCallback(data) {
+function updatePasswordSuccessCallback(data) {
     Console.log(data);
-
 }

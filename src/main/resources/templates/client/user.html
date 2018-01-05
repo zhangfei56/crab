@@ -16,10 +16,17 @@
     <header id="header" th:replace="client/part/header :: header"></header>
 
     <div>
-        <label>图片</label>
-        <input name="userImage" id="userImage" type="file" />
-        <button onclick="updateUser()">upload</button>
+        <label>修改密码</label>
     </div>
+    <div>
+        <label>原密码：</label>
+        <input name="oldPassword" id="oldPassword" type="password" />
+    </div>
+    <div>
+        <label>新密码：</label>
+        <input name="newPassword" id="newPassword" type="password" />
+    </div>
+    <input type="button" value="提交" onclick="updatePassword()"/>
 </body>
 
 </html>
