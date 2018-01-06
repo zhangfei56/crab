@@ -47,7 +47,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="voucher:${vouchers.getContent()}">
+                    <tr th:each="voucher:${datas.getContent()}">
                         <td class="check_box">
                             <input type="checkbox" name="voucher_check"/>
                             <i>✓</i>
@@ -69,6 +69,7 @@
                     </tr>
                 </tbody>
             </table>
+            <div th:include="page :: pager" th:remove="tag"></div>
             <button onclick="generatePic()" class="all_button no_border_btn">生成图片</button>
         </div>
     </div>

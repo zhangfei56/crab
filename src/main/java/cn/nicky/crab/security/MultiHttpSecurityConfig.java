@@ -56,7 +56,7 @@ public class MultiHttpSecurityConfig {
             auth.userDetailsService(customUserDetailsService()).passwordEncoder(new PasswordEncoder() {
                 @Override
                 public String encode(CharSequence charSequence) {
-                    String md = new Md5PasswordEncoder().encodePassword("13", AppConstants.MD5_PASSWORD_ENCODER_SALT);
+                    String md = new Md5PasswordEncoder().encodePassword("123", AppConstants.MD5_PASSWORD_ENCODER_SALT);
                     return new Md5PasswordEncoder().encodePassword(charSequence.toString(), AppConstants.MD5_PASSWORD_ENCODER_SALT);
                 }
 

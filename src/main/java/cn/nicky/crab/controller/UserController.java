@@ -84,12 +84,15 @@ public class UserController {
         return "client/user";
     }
 
-    @RequestMapping(value="/client/user/updatePassword", method = RequestMethod.POST)
+    @RequestMapping(value="/client/json/user/updatePassword", method = RequestMethod.POST)
     @ResponseBody
     public String updatePassword(String oldPassword, String newPassword){
-
-        return "failed";
-
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(!sUserService.checkPassword(securityUser.getUsername(), oldPassword)){{
+            return "oldPasswordFailed";
+        }}
+        sUserService.updatePassword(newPassword, securityUser.getUsername());
+        return "success";
     }
 
     @RequestMapping("/index")

@@ -29,7 +29,8 @@ public class VoucherController {
         status = null == status ? -1 : status;
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Page<Voucher> voucherPage = voucherService.findByUserId(securityUser.getId(), pager, status);
-        model.addAttribute("vouchers", voucherPage);
+        int nu = voucherPage.getNumber();
+        model.addAttribute("datas", voucherPage);
         model.addAttribute("status", status);
         return "client/voucherList";
     }

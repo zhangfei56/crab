@@ -57,7 +57,7 @@ public class OrderController {
     public String getOrders(Model model, Integer status, Pageable pageable){
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Page<OrderForm> orderForms = orderService.findOrders(securityUser.getId(),status, pageable);
-        model.addAttribute("orders", orderForms);
+        model.addAttribute("datas", orderForms);
         model.addAttribute("status", status);
         return "/client/orderList";
     }

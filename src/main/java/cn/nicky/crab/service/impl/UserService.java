@@ -5,9 +5,11 @@ import cn.nicky.crab.model.po.User;
 import cn.nicky.crab.repository.TemplateRepository;
 import cn.nicky.crab.repository.UserRepository;
 import cn.nicky.crab.service.IUserService;
+import cn.nicky.crab.util.AppConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,7 +50,16 @@ public class UserService implements IUserService {
         templateRepository.save(template);
     }
 
+    public boolean checkPassword(String phoneNumber, String password){
+        User user = userRepository.findUserByPhone(phoneNumber);
 
+        return new Md5PasswordEncoder().encodePassword(password, AppConstants.MD5_PASSWORD_ENCODER_SALT)
+                .equals(user.getPassword());
+    }
+
+    public void updatePassword(String newPassword, String phoneNumber){
+        userRepository.updatePassword(new Md5PasswordEncoder().encodePassword(newPassword, AppConstants.MD5_PASSWORD_ENCODER_SALT), phoneNumber);
+    }
 
 
 }

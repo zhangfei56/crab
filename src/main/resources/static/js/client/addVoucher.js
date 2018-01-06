@@ -20,7 +20,7 @@ function postVoucher(){
     sendMessage("/client/voucher/addVoucher","post",
         function(successData){
             if(successData == "success"){
-                window.location.href="/client/vouchers?status=-1";
+                window.location.href="/client/vouchers?status=-1&size=10";
             }
         }, function(errorData){
             console.log(errorData);

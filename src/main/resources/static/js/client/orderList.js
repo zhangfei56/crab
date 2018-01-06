@@ -68,7 +68,7 @@ function openDialog(spanNode){
 function beginSendExpress(){
    var type = $("#company_select").val();;
    var trackingNumber = $("#tracking_number_input").val();
-   var url = "/client/json/delivery?identityCode=" + identityCode+"&type="+type+"&trackingNumber"+trackingNumber;
+   var url = "/client/json/delivery?identityCode=" + identityCode+"&type="+type+"&trackingNumber="+trackingNumber;
    sendMessage(url, "get", function(data){
         if(data=="success"){
             $("#orderDialog").hide();

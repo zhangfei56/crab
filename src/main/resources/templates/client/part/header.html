@@ -7,13 +7,13 @@
         <h1 class="pub_left "><a  href="/" class="logo">香蟹汇</a></h1>
         <nav class="pub_right" id="main-nav">
             <ul class="m_clear">
-                <li><a href="/index">首页</a></li>
-                <li th:if="${!isNotMember}"><a href="/actions">操作流程</a></li>
-                <li th:if="${!isNotMember}"><a href="/client/vouchers?status=-1">提货券</a></li>
-                <li th:if="${!isNotMember}"><a href="/client/orders?status=-1">我的订单</a></li>
-                <li th:if="${!isNotMember}"><a href="/client/user">账户设置</a></li>
-                <li th:if="${!isNotMember}"><a href="" onclick="logout()">退出</a></li>
-                <li th:if="${isNotMember}"><a href="/login">登陆</a></li>
+                <li ><a href="/index">首页</a></li>
+                <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/actions">操作流程</a></li>
+                <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/vouchers?status=-1&amp;size=10">提货券</a></li>
+                <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/orders?status=-1">我的订单</a></li>
+                <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/user">账户设置</a></li>
+                <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="" onclick="logout()">退出</a></li>
+                <li th:if="${isNotMember == null ?false: isNotMember}"><a href="/login">登陆</a></li>
             </ul>
         </nav>
 
