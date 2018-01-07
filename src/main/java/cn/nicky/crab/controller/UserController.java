@@ -9,13 +9,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.persistence.OneToOne;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,39 +22,6 @@ public class UserController {
 
     @Resource
     private UserService sUserService;
-
-    @RequestMapping(value = "/admin/login")
-    public String adminLogin(){
-        return "admin/login";
-    }
-
-    @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public String findAllUser(Model model){
-        List<User> users = sUserService.findAllUser();
-        model.addAttribute("users", users);
-        return "admin/userList";
-    }
-
-    @RequestMapping(value = "/admin/addUser", method = RequestMethod.GET)
-    public String addUser(Model model){
-
-        return "admin/addUser";
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @ResponseBody
-    @RequestMapping(value = "/admin/addUser", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute User user){
-        System.out.print("user.phoneNumber"+user.getPhoneNumber());
-        sUserService.addUser(user);
-        return "success";
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @RequestMapping(value = "/admin/home")
-    public String adminHome(){
-        return "admin/home";
-    }
 
     @RequestMapping("/login")
     public String login(){

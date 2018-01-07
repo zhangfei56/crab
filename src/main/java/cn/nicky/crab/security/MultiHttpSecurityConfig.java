@@ -90,8 +90,8 @@ public class MultiHttpSecurityConfig {
                     .and()
                     .formLogin()
                     .loginPage("/admin/login")
-                    .failureUrl("/admin/login2?error=loginError")
-                    .defaultSuccessUrl("/admin/home")
+                    .failureUrl("/admin/login?error=loginError")
+                    .defaultSuccessUrl("/admin/users")
                     // logout
                     .and().logout().logoutUrl("/**/logout")
                     .logoutSuccessUrl("/admin/login").deleteCookies("JSESSIONID");
@@ -102,8 +102,20 @@ public class MultiHttpSecurityConfig {
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.userDetailsService(customUserDetailsService());
+            auth.userDetailsService(customUserDetailsService()).passwordEncoder(new PasswordEncoder() {
+                @Override
+                public String encode(CharSequence charSequence) {
+                    return new Md5PasswordEncoder().encodePassword(charSequence.toString(), AppConstants.MD5_PASSWORD_ENCODER_SALT);
+                }
+
+                @Override
+                public boolean matches(CharSequence rawPassword, String encodedPassword) {
+                    return new Md5PasswordEncoder().encodePassword(rawPassword.toString(), AppConstants.MD5_PASSWORD_ENCODER_SALT)
+                            .equals(encodedPassword);
+                }
+            });
         }
+
 
         @Bean
         public CustomUserDetailsService customUserDetailsService(){

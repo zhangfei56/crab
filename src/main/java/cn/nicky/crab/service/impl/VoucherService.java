@@ -85,7 +85,7 @@ public class VoucherService implements IVoucherService {
     }
 
 
-    private String generateIdentityCode(int length){
+    public static String generateIdentityCode(int length){
         StringBuilder sb=new StringBuilder();
         Random rand=new Random();//随机用以下三个随机生成器
         Random randdata=new Random();

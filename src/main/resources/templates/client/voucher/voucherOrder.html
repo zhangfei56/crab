@@ -20,8 +20,8 @@
         <input id="identity_code" type="hidden" th:value="${voucher.identityCode}"/>
         <div th:if="${voucher.status == 0}">
                 <div>
-                    <label>券号</label>
-                    <input id="code_input" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
+                    <label>券号:</label>
+                    <input id="code_input" th:disabled="true" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
                 </div>
                 <div>
                     <label>联系人:</label>
