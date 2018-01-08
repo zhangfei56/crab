@@ -84,6 +84,12 @@ public class UserController {
         return "client/user";
     }
 
+    @RequestMapping("/client/action")
+    public String action() {
+
+        return "client/action";
+    }
+
     @RequestMapping(value="/client/json/user/updatePassword", method = RequestMethod.POST)
     @ResponseBody
     public String updatePassword(String oldPassword, String newPassword){

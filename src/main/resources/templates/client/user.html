@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-
-    <meta charset="UTF-8"/>
-
-    <title>用户管理</title>
-
-</head>
 <head th:replace="client/part/head :: head"></head>
-<script type="text/javascript" th:src="@{/js/client/user.js}"/>
-
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户管理</title>
+    <link rel="stylesheet" href="/css/voucher.css"/>
+    <script type="text/javascript" th:src="@{/js/client/user.js}"/>
+</head>
 <body>
     <header id="header" th:replace="client/part/header :: header"></header>
-
-    <div>
-        <label>修改密码</label>
+    <div class="bg_box">
+        <h2 class="your_position"> >> 当前位置：账户设置</h2>
+        <div class="bg_inbox">
+            <div class="bg_title_box">
+                <div class="bg_title pub_left">修改密码</div>
+            </div>
+            <div class="all_form">
+                <p>
+                    <label>原密码：</label>
+                    <input name="oldPassword" id="oldPassword" type="password"  class="all_input"/>
+                </p>
+                <p>
+                    <label>新密码：</label>
+                    <input name="newPassword" id="newPassword" type="password"  class="all_input"/>
+                </p>
+                <p>
+                    <label></label><input type="button" value="提交" onclick="updatePassword()" class="all_button"/>
+                </p>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>原密码：</label>
-        <input name="oldPassword" id="oldPassword" type="password" />
-    </div>
-    <div>
-        <label>新密码：</label>
-        <input name="newPassword" id="newPassword" type="password" />
-    </div>
-    <input type="button" value="提交" onclick="updatePassword()"/>
 </body>
 
 </html>

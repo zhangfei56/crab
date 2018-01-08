@@ -1,3 +1,21 @@
+//获取屏幕宽度，自适应
+var oHtml = document.documentElement;
+getSize();
+	window.onresize = function(){
+		getSize();
+	}
+function getSize(){
+	    var screenWidth = oHtml.clientWidth;
+   	if(screenWidth < 320){
+   		oHtml.style.fontSize = '17.0667px';
+   	} else if(screenWidth > 750){
+   		oHtml.style.fontSize = '40px';
+   	}else{
+
+   		oHtml.style.fontSize = screenWidth/(750/40) + 'px';
+   	}
+}
+
 $(function(){
     if ($("#voucher_status").val() == 2){
         var url = "/anyone/express/"+$("#identity_code").val();

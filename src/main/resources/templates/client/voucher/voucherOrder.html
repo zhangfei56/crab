@@ -3,43 +3,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head>
 
-    <meta charset="UTF-8"/>
-
-    <title>券</title>
-
-</head>
 <head th:replace="client/part/head :: head"></head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>券</title>
+    <link rel="stylesheet" href="/css/vocherOrder.css"/>
+    <script type="text/javascript" th:src="@{/js/client/voucherOrder.js}"/>
+</head>
 
-<script type="text/javascript" th:src="@{/js/client/voucherOrder.js}"/>
 
 <body>
-    <div>
+    <div class="recruit">
         <input id="voucher_status" type="hidden" th:value="${voucher.status}"/>
         <input id="identity_code" type="hidden" th:value="${voucher.identityCode}"/>
         <div th:if="${voucher.status == 0}">
-                <div>
+                <p>
                     <label>券号</label>
                     <input id="code_input" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
-                </div>
-                <div>
+                </p>
+                <p>
                     <label>联系人:</label>
                     <input id="contact_input" type="text" name="contact"/>
-                </div>
-                <div>
+                </p>
+                <p>
                     <label>电话号码:</label>
                     <input id="phone_number_input" type="text" name="phoneNumber"/>
-                </div>
-                <div>
+                </p>
+                <p>
                     <label>地址:</label>
                     <input id="address_input" type="text" name="address"/>
-                </div>
-                <div>
+                </p>
+                <p>
                     <label>预计送达日期:</label>
                     <input id="need_date_input" type="date" name="needDateTime"/>
-                </div>
-
+                </p>
                 <input type="submit" value="Submit" onclick="sendVoucherOrder()"/>
 
         </div>

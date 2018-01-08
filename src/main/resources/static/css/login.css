@@ -14,14 +14,6 @@
 .inner{
     float: right;
 }
-.inner span{
-    color:#ff4200;
-}
-.outer ul li{
-    float: left;
-    padding: 0 10px;
-}
-
 .outer ul li .logo{
     display: inline-block;
     height: 23px;
@@ -33,8 +25,9 @@
     margin-right: 6px;
 }
 .logo_img{
-    width:1200px;
-    margin:25px auto;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 25px 0;
 }
 
 .logo_img a{

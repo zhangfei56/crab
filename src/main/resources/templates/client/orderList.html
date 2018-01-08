@@ -4,62 +4,65 @@
 <head th:replace="client/part/head :: head"></head>
 <head>
     <meta charset="UTF-8"/>
-    <title>订单</title>
+    <title>我的订单</title>
     <script type="text/javascript" th:src="@{/js/client/orderList.js}"/>
-
+    <link rel="stylesheet" href="/css/voucher.css"/>
 </head>
 <body>
 <header id="header" th:replace="client/part/header :: header"></header>
     <div class="bg_box">
-
-        <h2 class="your_position"> >> 当前位置：订单</h2>
+        <h2 class="your_position"> >> 当前位置：我的订单</h2>
         <div class="bg_inbox">
-            <table>
-                <thead>
-                    <tr>
-                        <td>券号：</td>
-                        <td>规格：</td>
-                        <td>创建日期：</td>
-                        <td>预约人：</td>
-                        <td>预留电话：</td>
-                        <td>预计送到时间：</td>
-                        <td>状态：
-                            <input id="voucher_status_id" style="display: none" th:value="${status}"/>
-                            <select id="voucher_status_select">
-                                <option value="-1">全部</option>
-                                <option value="1">提货</option>
-                                <option value="2">发货</option>
-                                <option value="3">完成</option>
-                            </select>
-                        </td>
-                        <td>操作:</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="order:${datas.getContent()}">
-                        <td th:text="${order.voucher.identityCode}"></td>
-                        <td th:text="${order.voucher.voucherCategory.detail}"></td>
-                        <td th:text="${order.voucher.createDateTime}"></td>
-                        <td th:text="${order.contact}"></td>
-                        <td th:text="${order.phoneNumber}"></td>
-                        <td th:text="${order.needDateTime}?${order.needDateTime}:'无'"></td>
-                        <td th:switch="${order.voucher.status}">
-                            <span th:case="0">创建</span>
-                            <span th:case="1">提货</span>
-                            <span th:case="2">发货</span>
-                            <span th:case="3">完成</span>
-                        </td>
-                        <td th:switch="${order.voucher.status}">
-                            <span th:case="0">无</span>
-                            <a th:case="1" onclick="openDialog(this)">发货</a>
-                            <a th:case="2" onclick="finishOrder(this)">完成</a>
-                            <span th:case="3">无</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div th:include="page :: pager" th:remove="tag"></div>
-
+            <div class="bg_title_box">
+                <div class="bg_title pub_left">我的订单</div>
+            </div>
+            <div class="pub_table">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>券号：</td>
+                            <td>规格：</td>
+                            <td>创建日期：</td>
+                            <td>预约人：</td>
+                            <td>预留电话：</td>
+                            <td>预计送到时间：</td>
+                            <td>状态：
+                                <input id="voucher_status_id" style="display: none" th:value="${status}"/>
+                                <select id="voucher_status_select">
+                                    <option value="-1">全部</option>
+                                    <option value="1">提货</option>
+                                    <option value="2">发货</option>
+                                    <option value="3">完成</option>
+                                </select>
+                            </td>
+                            <td>操作:</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="order:${datas.getContent()}">
+                            <td th:text="${order.voucher.identityCode}"></td>
+                            <td th:text="${order.voucher.voucherCategory.detail}"></td>
+                            <td th:text="${order.voucher.createDateTime}"></td>
+                            <td th:text="${order.contact}"></td>
+                            <td th:text="${order.phoneNumber}"></td>
+                            <td th:text="${order.needDateTime}?${order.needDateTime}:'无'"></td>
+                            <td th:switch="${order.voucher.status}">
+                                <span th:case="0">创建</span>
+                                <span th:case="1">提货</span>
+                                <span th:case="2">发货</span>
+                                <span th:case="3">完成</span>
+                            </td>
+                            <td th:switch="${order.voucher.status}">
+                                <span th:case="0">无</span>
+                                <a th:case="1" onclick="openDialog(this)" class="all_button button01">发货</a>
+                                <a th:case="2" onclick="finishOrder(this)" class="all_button button01">完成</a>
+                                <span th:case="3">无</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div th:include="page :: pager" th:remove="tag"></div>
+            </div>
         </div>
     </div>
     <div id="orderDialog">
