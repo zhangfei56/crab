@@ -32,7 +32,7 @@ public interface VoucherRepository extends JpaRepository <Voucher, Integer>{
 
     @Modifying
     @Transactional
-    @Query(value = "update Voucher v set v.status = ?1 where v.identityCode = ?2")
+    @Query(value = "update voucher v set v.status = ?1 where v.identity_code = ?2", nativeQuery = true)
     int updateStatus(int status, String code);
 
 }
