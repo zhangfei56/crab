@@ -2,6 +2,7 @@ package cn.nicky.crab.service.impl;
 
 import cn.nicky.crab.model.po.Template;
 import cn.nicky.crab.model.po.User;
+import cn.nicky.crab.model.po.Voucher;
 import cn.nicky.crab.repository.TemplateRepository;
 import cn.nicky.crab.repository.UserRepository;
 import cn.nicky.crab.service.IUserService;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -61,5 +63,13 @@ public class UserService implements IUserService {
         userRepository.updatePassword(new Md5PasswordEncoder().encodePassword(newPassword, AppConstants.MD5_PASSWORD_ENCODER_SALT), phoneNumber);
     }
 
-
+    public boolean forgetPassword(String phoneNumber){
+        User user = userRepository.findUserByPhone(phoneNumber);
+        if(user == null) return false;
+        String newPassword = VoucherService.generateIdentityCode(4);
+        String message = "您的新密码是："+ newPassword+". 请及时更新密码";
+        // TODO
+        updatePassword(newPassword, phoneNumber);
+        return true;
+    }
 }

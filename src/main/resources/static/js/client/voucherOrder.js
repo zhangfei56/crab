@@ -22,7 +22,9 @@ $(function(){
         sendMessage(url, "get", expressCallback, function (error) {
                 console.log(error);
             }, null)
-    }
+    };
+
+    $("#need_date_input").val(new Date().Format("yyyy-MM-dd"));
 
 })
 
@@ -44,7 +46,9 @@ function sendVoucherOrder(){
     fd.append("phoneNumber",$("#phone_number_input").val());
 
     fd.append("address",$("#address_input").val());
-    fd.append("needDateTime",new Date($("#need_date_input").val()));
+    var needDate = $("#need_date_input").val();
+    needDate = needDate == null? new Date().Format("yyyy-MM-dd"): needDate;
+    fd.append("needDateTime",needDate);
 
     sendFormdata("/anyone/order","post", function(data){
         if(data=="success"){

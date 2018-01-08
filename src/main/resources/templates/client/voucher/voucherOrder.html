@@ -18,11 +18,12 @@
         <input id="voucher_status" type="hidden" th:value="${voucher.status}"/>
         <input id="identity_code" type="hidden" th:value="${voucher.identityCode}"/>
         <div th:if="${voucher.status == 0}">
-                <p>
-                    <label>券号</label>
-                    <input id="code_input" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
-                </p>
-                <p>
+
+                <div>
+                    <label>券号:</label>
+                    <input id="code_input" th:disabled="true" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
+                </div>
+                <div>
                     <label>联系人:</label>
                     <input id="contact_input" type="text" name="contact"/>
                 </p>
