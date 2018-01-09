@@ -13,7 +13,7 @@
                 <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/orders?status=-1">我的订单</a></li>
                 <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/user">账户设置</a></li>
                 <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="" onclick="logout()">退出</a></li>
-                <li th:if="${isNotMember == null ?false: isNotMember}"><a href="/login">登陆</a></li>
+                <li th:if="${isNotMember == null ?false: isNotMember}"><a href="/login">登录</a></li>
             </ul>
         </nav>
 

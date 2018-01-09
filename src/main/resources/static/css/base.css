@@ -100,7 +100,7 @@ label{
 }
 #main-nav ul li a:hover{
     background:#ff7b33;
-        color:#fff;
+    color:#fff;
 }
 #main-nav ul li:last-child a:hover{
     background:none;

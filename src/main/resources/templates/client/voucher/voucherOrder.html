@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
-
 <head th:replace="client/part/head :: head"></head>
 <head>
     <meta charset="UTF-8"/>
-    <title>券</title>
-    <link rel="stylesheet" href="/css/vocherOrder.css"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,  user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>提货信息</title>
+    <link rel="stylesheet" href="/css/voucherOrder.css"/>
     <script type="text/javascript" th:src="@{/js/client/voucherOrder.js}"/>
 </head>
-
-
 <body>
-    <div class="recruit">
+    <div class="bg_box">
         <input id="voucher_status" type="hidden" th:value="${voucher.status}"/>
         <input id="identity_code" type="hidden" th:value="${voucher.identityCode}"/>
-        <div th:if="${voucher.status == 0}">
-
-                <div>
-                    <label>券号:</label>
-                    <input id="code_input" th:disabled="true" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
-                </div>
-                <div>
+        <div th:if="${voucher.status == 0}" class="recruit">
+            <header>填写收货信息</header>
+            <p>
+                <label>券号:</label>
+                <input id="code_input" th:disabled="true" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
+            </p>
+            <div>
+                <p>
                     <label>联系人:</label>
                     <input id="contact_input" type="text" name="contact"/>
                 </p>
@@ -39,24 +37,28 @@
                     <label>预计送达日期:</label>
                     <input id="need_date_input" type="date" name="needDateTime"/>
                 </p>
-                <input type="submit" value="Submit" onclick="sendVoucherOrder()"/>
-
+                <p>
+                    <label></label>
+                    <input type="submit" value="提交" class="all_button" onclick="sendVoucherOrder()"/>
+                </p>
+            </div>
+            <footer>Copyright © www.xiangxh.com All rights reserved </footer>
         </div>
-
-        <div th:if="${voucher.status == 1}">
-            等待商家发货
+        <div th:if="${voucher.status == 1}" class="waiting">
         </div>
         <div th:if="${voucher.status == 2}">
-            <p>快递查询</p>
+            <header>快递查询</header>
             <table id="show_express_table">
                 <tbody>
 
                 </tbody>
             </table>
-
+            <footer>Copyright © www.xiangxh.com All rights reserved </footer>
         </div>
         <div th:if="${voucher.status == 3}">
-            订单完成
+            <header>订单完成</header>
+            <div class="order_success">订单完成</div>
+            <footer>Copyright © www.xiangxh.com All rights reserved </footer>
         </div>
     </div>
 </body>

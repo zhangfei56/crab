@@ -7,9 +7,15 @@
 <head>
     <link rel="stylesheet" href="/css/login.css"/>
     <script type="text/javascript" th:src="@{/js/client/tipbox.js}"/>
+    <style type="text/css">
+        #main-nav li:nth-child(2) a{
+            background:#ff7b33;
+            color:#fff;
+        }
+    </style>
 </head>
 <body style="background: #f8f8f8;height: 100%;">
-
+<header id="header" th:replace="client/part/header :: header"></header>
 this is action
 <div class="my_footer">
     <p>版权所有 Copyright © www.xiangxh.com All rights reserved </p>
