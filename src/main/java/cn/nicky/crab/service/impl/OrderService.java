@@ -80,7 +80,16 @@ public class OrderService implements IOrderService {
     }
 
     public List<CourierCompany> findCourierCompany(boolean common){
-        return courierCompanyRepository.findByCommon(common);
+        if(common){
+            return courierCompanyRepository.findByCommon(common);
+        }
+        return courierCompanyRepository.findAll();
+    }
+
+    public void changeCourierCompanyStatus(int companyId){
+        CourierCompany courierCompany = courierCompanyRepository.findOne(companyId);
+        courierCompany.setCommon(!courierCompany.isCommon());
+        courierCompanyRepository.save(courierCompany);
     }
 
     public void deliveryGoods(String identityCode, String type, String trackingNumber){

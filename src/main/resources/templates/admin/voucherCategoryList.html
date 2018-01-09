@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="admin/part/head :: head"></head>
+<head><title>customer manager</title></head>
+<body>
+<header id="header" th:replace="admin/part/header :: header"></header>
+<script type="text/javascript" th:src="@{/js/admin/voucherCategory.js}"/>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>详情:</th>
+                <th>操作:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.detail}"></td>
+                <td>
+                    <input type="button" value="删除" onclick="deleteCategory(this)"/>
+                    <input type="hidden" th:value="${category.id}"/>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div>
+        <p>添加券类型</p>
+        <label>券类型</label>
+        <input id="category_id_input" type="text"/>
+        <input type="button" value="添加" onclick="addCategory()"/>
+    </div>
+</div>
+
+
+<footer id="footer" th:replace="admin/part/footer :: footer"></footer>
+
+</body>
+
+</html>
