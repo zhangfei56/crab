@@ -3,6 +3,8 @@
 
 <head th:fragment="head">
     <meta charset="utf-8"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>阳澄湖大闸蟹</title>
     <link rel="stylesheet" href="/css/base.css"/>
     <link rel="stylesheet" href="/css/login.css"/>

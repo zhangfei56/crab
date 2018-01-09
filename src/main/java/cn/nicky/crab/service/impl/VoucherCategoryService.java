@@ -22,4 +22,16 @@ public class VoucherCategoryService implements IVoucherCategoryService {
     public List<VoucherCategory> getVoucherCategories(){
         return voucherCategoryRepository.findAll();
     }
+
+    public String addVoucherCategory(VoucherCategory category){
+        VoucherCategory existCategory = voucherCategoryRepository.getByDetail(category.getDetail());
+        if(existCategory != null) return "exist";
+        voucherCategoryRepository.save(category);
+        return "success";
+    }
+
+    public void deleteVoucherCategory(int categoryId){
+        voucherCategoryRepository.delete(categoryId);
+    }
+
 }

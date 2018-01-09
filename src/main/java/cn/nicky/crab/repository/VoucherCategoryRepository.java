@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface VoucherCategoryRepository extends JpaRepository <VoucherCategory, Integer>{
-
+    VoucherCategory getByDetail(String detail);
 }

@@ -59,7 +59,7 @@ public class OrderController {
         Page<OrderForm> orderForms = orderService.findOrders(securityUser.getId(),status, pageable);
         model.addAttribute("datas", orderForms);
         model.addAttribute("status", status);
-        return "/client/orderList";
+        return "client/orderList";
     }
 
     @RequestMapping(value = "/client/company", method = RequestMethod.GET)
