@@ -14,21 +14,28 @@
     <table>
         <thead>
             <tr>
-                <th>name</th>
-                <th>phone number</th>
-                <th>register date</th>
-                <th></th>
+                <th>用户名：</th>
+                <th>手机号：</th>
+                <th>注册日期：</th>
+                <th>有效期：</th>
+                <th>操作：</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="user : ${users}">
+            <tr th:each="user : ${datas.getContent()}">
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.phoneNumber}"></td>
                 <td th:text="${user.registerDate}"></td>
+                <td th:text="${user.expireDate}"></td>
+                <td>
+                    <input type="button" value="增加有效期" onclick=""/>
+                    <input type="hidden" th:value="${user.id}"/>
+                </td>
             </tr>
 
         </tbody>
     </table>
+    <div th:include="page :: pager" th:remove="tag"></div>
 
 </div>
 

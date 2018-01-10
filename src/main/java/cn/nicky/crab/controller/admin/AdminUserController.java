@@ -2,6 +2,8 @@ package cn.nicky.crab.controller.admin;
 
 import cn.nicky.crab.model.po.User;
 import cn.nicky.crab.service.impl.UserService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,15 +26,15 @@ public class AdminUserController {
         return "admin/login";
     }
 
-    @RequestMapping(value = "/admin/")
+    @RequestMapping(value = "/admin")
     public String admin(){
         return "admin/login";
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public String findAllUser(Model model){
-        List<User> users = sUserService.findAllUser();
-        model.addAttribute("users", users);
+    public String findAllUser(Model model, Pageable pageable){
+        Page<User> users = sUserService.findAllUser(pageable);
+        model.addAttribute("datas", users);
         return "admin/userList";
     }
 
@@ -42,11 +44,18 @@ public class AdminUserController {
         return "admin/addUser";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/admin/addUser", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute User user){
-        System.out.print("user.phoneNumber"+user.getPhoneNumber());
+    public String addUser(User user){
         sUserService.addUser(user);
         return "success";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/admin/user/phone", method = RequestMethod.GET)
+    public String chenkPhoneNumber(String phone_number){
+        String ss=sUserService.checkPhoneNumber(phone_number).toString();
+        return ss;
     }
 
     @PreAuthorize("hasRole('ADMIN')")

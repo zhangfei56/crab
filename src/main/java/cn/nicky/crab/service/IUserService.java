@@ -10,7 +10,5 @@ import java.util.List;
 public interface IUserService {
     User findUserByPhoneNumber(String email);
 
-    List<User> findAllUser();
-
     void addUser(User user);
 }

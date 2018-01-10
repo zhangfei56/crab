@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.thymeleaf.util.DateUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -44,11 +45,15 @@ public class UserController {
     }
 
     @RequestMapping("/client/user")
-    public String findUser() {
+    public String findUser(Model model) {
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = sUserService.findUserByPhoneNumber(securityUser.getUsername());
+        model.addAttribute("user", user);
 
         return "client/user";
     }
+
+
 
     @RequestMapping("/client/action")
     public String action() {
@@ -56,13 +61,19 @@ public class UserController {
         return "client/action";
     }
 
+    @RequestMapping(value="/client/json/user/checkPassword", method = RequestMethod.GET)
+    @ResponseBody
+    public String checkPassword(String oldPassword){
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return sUserService.checkPassword(securityUser.getUsername(), oldPassword).toString();
+    }
+
     @RequestMapping(value="/client/json/user/updatePassword", method = RequestMethod.POST)
     @ResponseBody
-    public String updatePassword(String oldPassword, String newPassword){
+    public String updatePassword(String newPassword){
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(!sUserService.checkPassword(securityUser.getUsername(), oldPassword)){{
-            return "oldPasswordFailed";
-        }}
+
         sUserService.updatePassword(newPassword, securityUser.getUsername());
         return "success";
     }

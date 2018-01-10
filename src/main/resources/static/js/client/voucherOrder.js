@@ -46,7 +46,7 @@ function sendVoucherOrder(){
 
     fd.append("address",$("#address_input").val());
     var needDate = $("#need_date_input").val();
-    needDate = needDate == null? new Date().Format("yyyy-MM-dd"): needDate;
+    needDate = needDate == null? new Date(): new Date(needDate);
     fd.append("needDateTime",needDate);
 
     sendFormdata("/anyone/order","post", function(data){
