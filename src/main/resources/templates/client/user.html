@@ -7,6 +7,8 @@
     <title>用户管理</title>
     <link rel="stylesheet" href="/css/voucher.css"/>
     <script type="text/javascript" th:src="@{/js/client/user.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
 </head>
 <body>
     <header id="header" th:replace="client/part/header :: header"></header>
@@ -14,20 +16,44 @@
         <h2 class="your_position"> >> 当前位置：账户设置</h2>
         <div class="bg_inbox">
             <div class="bg_title_box">
-                <div class="bg_title pub_left">修改密码</div>
+                <div class="bg_title pub_left">基本信息</div>
             </div>
             <div class="all_form">
                 <p>
-                    <label>原密码：</label>
-                    <input name="oldPassword" id="oldPassword" type="password"  class="all_input"/>
+                    <label>用户名：</label>
+                    <span th:text="${user.name}" class="all_input"></span>
                 </p>
                 <p>
-                    <label>新密码：</label>
-                    <input name="newPassword" id="newPassword" type="password"  class="all_input"/>
+                    <label>手机号：</label>
+                    <span th:text="${user.phoneNumber}" class="all_input"></span>
                 </p>
                 <p>
-                    <label></label><input type="button" value="提交" onclick="updatePassword()" class="all_button"/>
+                    <label>有效期：</label>
+                    <span th:text=" ${#dates.format(user.expireDate, 'yyyy-MM-dd')}" class="all_input"></span>
                 </p>
+
+            </div>
+            <div class="bg_title_box">
+                <div class="bg_title pub_left">修改密码</div>
+            </div>
+            <div class="all_form">
+                <form id="change_password_form">
+                    <p>
+                        <label>原密码：</label>
+                        <input name="oldPassword" id="oldPassword" type="password"  class="all_input"/>
+                    </p>
+                    <p>
+                        <label>新密码：</label>
+                        <input name="newPassword" id="newPassword" type="password"  class="all_input"/>
+                    </p>
+                    <p>
+                        <label>新密码：</label>
+                        <input name="confirmPassword" id="confirmPassword" type="password"  class="all_input"/>
+                    </p>
+                    <p>
+                        <label></label><input type="button" value="提交" onclick="updatePassword()" class="all_button"/>
+                    </p>
+                </form>
             </div>
         </div>
     </div>

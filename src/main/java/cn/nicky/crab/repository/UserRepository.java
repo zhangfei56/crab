@@ -1,6 +1,7 @@
 package cn.nicky.crab.repository;
 
 import cn.nicky.crab.model.po.User;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +18,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository <User, Integer>{
 
     @Query(value = "select * from user u where u.phone_number=:phone", nativeQuery = true)
-    User findUserByPhone(@Param("phone") String phone);
+    User findUserByPhoneNumber(@Param("phone") String phone);
 
     @Query(value = "select * from user u order by :order limit :limit", nativeQuery = true)
     List<User> findUserByQuery(@Param("limit")String limit, @Param("order")String order);
@@ -26,4 +27,5 @@ public interface UserRepository extends JpaRepository <User, Integer>{
     @Transactional
     @Query(value = "update user u set u.password = ?1 where u.phoneNumber = ?2", nativeQuery = true)
     int updatePassword(String password, String phoneNumber);
+
 }

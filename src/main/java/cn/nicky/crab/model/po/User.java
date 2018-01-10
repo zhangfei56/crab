@@ -1,5 +1,7 @@
 package cn.nicky.crab.model.po;
 
+import org.hibernate.mapping.PrimaryKey;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,9 +20,6 @@ public class User{
 
     @Column
     private String password;
-
-    @Column
-    private Date createDate;
 
     @Column
     private String phoneNumber;
@@ -43,25 +42,11 @@ public class User{
     @Column(name=" image_code", columnDefinition="Blob")
     private byte[] imageCode;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "UserRoleMapper", joinColumns ={@JoinColumn(name = "userId", referencedColumnName = "id")},
-    inverseJoinColumns = {@JoinColumn(name = "roleId", referencedColumnName = "id")}
-    )
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinTable()
     public List<Role> roles;
 
     public User() {
-
-    }
-
-    public User(String name, String email, String password, Date createDate) {
-
-       this.name = name;
-
-       this.email = email;
-
-       this.password = password;
-
-       this.createDate = createDate;
     }
 
     public byte[] getImageCode() {
@@ -110,14 +95,6 @@ public class User{
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
     }
 
     public String getPhoneNumber() {

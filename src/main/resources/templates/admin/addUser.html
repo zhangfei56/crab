@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<meta name="_csrf" th:content="${_csrf.token}"/>
-<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <head th:replace="admin/part/head :: head"></head>
 <head><title>customer manager</title></head>
 
 <body>
 <header id="header" th:replace="admin/part/header :: header"></header>
-<script type="text/javascript" th:src="@{/js/admin/user.js}"/>
-
+<script type="text/javascript" th:src="@{/js/admin/addUser.js}"/>
+<script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
+<script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
 <div>
+    <form id="add_user_form">
 
-        <div><label> User Name : <input type="text" id="userName"/> </label></div>
+        <div><label> 用户名: <input type="text" id="userName" name="user_name"/> </label></div>
 
-        <div><label> Password: <input type="text" id="password"/> </label></div>
+        <div><label> 手机号: <input type="text" id="phone_number" name="phone_number"/> </label></div>
 
-        <div><input type="button" value="提交" onclick="postUser()"/></div>
+        <div><label> 有效期: <input type="date" id="expire_date" name="expire_date"/> </label></div>
 
+        <div><label> 密码: <input type="text" id="pre_password" name="pre_password"/> </label></div>
+
+        <div><label> 确认密码: <input type="text" id="password" name="password"/> </label></div>
+
+        <div><input type="submit" value="提交" /></div>
+
+    </form>
 
 
 </div>
