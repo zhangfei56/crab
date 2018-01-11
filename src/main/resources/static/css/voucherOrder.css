@@ -58,7 +58,8 @@ em, i ,strong {
 header,footer{
 	width: 18.75rem;
 	height: 3.5rem;
-	background-color: #fb9633;
+	background: url(../img/page2.png) repeat-x;
+	background-size: contain;
 	color:#fff;
 	font-size: 1rem;
 	text-align: center;
@@ -66,9 +67,11 @@ header,footer{
 	margin-bottom: 1.5rem;
 }
 footer{
+    background: url(../img/page1.png) repeat-x;
+	background-size: contain;
 	font-size: .6rem;
 	margin-bottom: 0;
-	position: absolute;
+	position: fixed;
 	bottom:0;
 }
 .recruit p{
@@ -108,7 +111,7 @@ footer{
 	background: #c0e4fc url(../img/waiting.png) no-repeat center center;
 	background-size: contain;
 }
-.order_success{
+.order_success,order_over{
 	width: 5rem;
 	height: 10rem;
 	position: absolute;
@@ -116,8 +119,13 @@ footer{
 	left: 50%;
 	transform: translate(-50%,-50%);
 	background: url(../img/index91-cur.png) no-repeat center center;
-	background-size: contain;
+    background-size: contain;
 	padding-top: 8.8rem;
 	font-size: 1rem;
 	text-align: center;
+}
+order_over{
+    width: 6rem;
+     background: url(../img/empty.png) no-repeat center center;
+     background-size: contain;
 }

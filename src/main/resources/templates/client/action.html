@@ -1,12 +1,57 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
 <head th:replace="client/part/head :: head"></head>
 <head>
-    <link rel="stylesheet" href="/css/login.css"/>
-    <script type="text/javascript" th:src="@{/js/client/tipbox.js}"/>
+    <link rel="stylesheet" href="/css/m_action.css"/>
+    <title>操作流程</title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var li02=$('.oper_nav ul li'), f1Top=$('#o01').offset().top-240, f2Top=$('#o02').offset().top-240, f3Top=$('#o03').offset().top-240, f4Top=$('#o04').offset().top-240, f5Top=$('#o05').offset().top-240, f6Top=$('#o06').offset().top-240, f7Top=$('#o07').offset().top-240;
+             li02.click(function() {
+                $(this).addClass('op_cur').siblings('li').removeClass('op_cur');
+                var i=$(this).index();
+                if(i==6){
+                    $('html,body').stop().animate({
+                        'scrollTop':f7Top+120
+                    }, 500);
+                }else if(i==5){
+                    $('html,body').stop().animate({
+                        'scrollTop':f6Top+120
+                    }, 500);
+                }else if(i==4){
+                    $('html,body').stop().animate({
+                        'scrollTop':f5Top+120
+                    }, 500);
+                }else if(i==3){
+                    $('html,body').stop().animate({
+                        'scrollTop':f4Top+120
+                    }, 500);
+                }else if(i==2){
+                    $('html,body').stop().animate({
+                        'scrollTop':f3Top+120
+                    }, 500);
+                }else if(i==1){
+                    $('html,body').stop().animate({
+                        'scrollTop':f2Top+120
+                    }, 500);
+                }else if(i==0){
+                    $('html,body').stop().animate({
+                        'scrollTop':f1Top+120
+                    }, 500);
+                }
+             })
+
+             var colol=$('.colf3 ol li'), colul=$('.colf3 ul');
+             colol.click(function() {
+                $(this).addClass('co_current1');
+                $(this).siblings().removeClass('co_current1');
+                var n=$(this).index();
+                $(this).parent('ol').siblings('ul').eq(n).addClass('now_cur');
+                $(this).parent('ol').siblings('ul').eq(n).siblings('ul').removeClass('now_cur');
+             })
+         });
+    </script>
     <style type="text/css">
         #main-nav li:nth-child(2) a{
             background:#ff7b33;
@@ -15,11 +60,107 @@
     </style>
 </head>
 <body style="background: #f8f8f8;height: 100%;">
-<header id="header" th:replace="client/part/header :: header"></header>
-this is action
-<div class="my_footer">
-    <p>版权所有 Copyright © www.xiangxh.com All rights reserved </p>
-</div>
+    <header id="header" th:replace="client/part/header :: header"></header>
+    <div class="outer_banner">
+        <img src="/img/operation_banner.png"/>
+    </div>
+    <div class="colf9">
+        <div class="oper_nav">
+            <img src="/img/operation_bg.png" height="242" width="221"/>
+            <ul>
+                <li class="op_cur">
+                    <p>01</p>
+                    <h2>系统的访问与登录</h2>
+                    <span></span>
+                </li>
+                <li>
+                    <p>02</p>
+                    <h2>提货券模板查看及修改</h2>
+                    <span></span>
+                </li>
+                <li>
+                    <p>03</p>
+                    <h2>提货券的添加和生成</h2>
+                </li>
+                <li class="lop_li03" style="margin-right:82px;">
+                    <p>04</p>
+                    <h2>订单的查看和处理</h2>
+                </li>
+                <li class="lop_li03">
+                    <p>05</p>
+                    <h2>线上签订确认合同</h2>
+                    <span></span>
+                </li>
+                <li class="lop_li03">
+                    <p>06</p>
+                    <h2>线上支付</h2>
+                    <span></span>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div id="o01" class="width01">
+        <h2 class="o_tit1"><p>01</p>香蟹汇系统的访问与登录</h2>
+        <div class="o_img"><img src="/img/opera0.png" height="400" width="630"/></div>
+        <div class="o_exp">您可进入香蟹汇官网<a class="color_28" href="">www.xiangxh.com</a>根据我们提供的账号和<br/>密码登陆系统</div>
+    </div>
+    <div class="colf9">
+        <div id="o02" class="width01">
+            <h2 class="o_tit1"><p>02</p>提货券模板的查看及修改</h2>
+            <ul class="img_ul">
+                <li>
+                    <img src="/img/opera1.png" height="356" width="398"/>
+                    <p>点击导航栏里的<span class="color_28">提货券</span>，进入该页面  <i></i></p>
+                </li>
+                <li>
+                    <img src="/img/opera2.png" width="360" height="309"/>
+                    <p>点击<span class="color_28">查看模板</span>，进入<span class="color_28">提货券模板</span>页面  <i></i></p>
+                </li>
+                <li>
+                    <img src="/img/opera3.png" height="333" width="384"/>
+                    <p>完善您的模板信息，点击<span class="color_28">保存修改</span>按钮</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="o03" class="width01">
+        <h2 class="o_tit1"><p>03</p>提货券的添加和生成</h2>
+        <ul class="img_ul">
+            <li>
+                <img src="/img/opera4.png" height="307" width="350"/>
+                <p>点击<span class="color_28">添加券</span>，进入<span class="color_28">添加提货券</span>页面  <i></i></p>
+            </li>
+            <li>
+                <img src="/img/opera5.png" height="281" width="344"/>
+                <p>完善提货券信息，点击<span class="color_28">提交</span>按钮<i></i></p>
+            </li>
+            <li>
+                <img src="/img/opera6.png" height="301" width="432"/>
+                <p>选择需要的提货券，点击<span class="color_28">生成图片</span>下载图片压缩包</p>
+            </li>
+        </ul>
+    </div>
+    <div class="colf9">
+        <div id="o04" class="width01">
+            <h2 class="o_tit1"><p>04</p>客户订单的查看和处理</h2>
+            <ul class="img_ul">
+                <li>
+                    <img src="/img/opera7.png" height="327" width="284"/>
+                    <p>点击导航栏里<span class="color_28">我的订单</span>，查看订单列表  <i></i></p>
+                </li>
+                <li>
+                    <img src="/img/opera8.png" height="295" width="315"/>
+                    <p>选择等待发货的订单，点击<span class="color_28">发货</span>按钮  <i></i></p>
+                </li>
+                <li>
+                    <img src="/img/opera9.png" height="220" width="349"/>
+                    <p>填写物流单号，选择相应的快递公司，点击<span class="color_28">确定</span>按钮</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer id="footer" th:replace="client/part/footer :: footer"></footer>
 </body>
 
 </html>

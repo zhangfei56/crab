@@ -1,0 +1,197 @@
+.width01{
+  width: 1200px;
+  margin:0 auto;
+  font-size: 18px;
+  color:#3d3d3d;
+}
+.outer_banner{
+    width:100%;
+}
+.outer_banner img{
+   width: 100%;
+   min-width: 1200px;
+   margin: 0 auto;
+   height: auto;
+
+ }
+.colf9{
+  width: 100%;
+  background: #f9f9f9;
+}
+.oper_nav{
+  position: relative;
+  width: 1200px;
+  height: 350px;
+  margin: 0 auto;
+}
+.oper_nav ul{
+  position: absolute;
+  width: 940px;
+  left: 250px;
+}
+.oper_nav ul li{
+  float: left;
+  height: 180px;
+  color: #acacac;
+  cursor: pointer;
+}
+.oper_nav ul .lop_li03{
+  float: right;
+}
+.oper_nav p{
+  height: 44px;
+  font-size: 34px;
+  margin-left: 34px;
+}
+.oper_nav h2{
+  width: 200px;
+  margin-left: 34px;
+  padding-left: 10px;
+  float: left;
+  height: 80px;
+  line-height: 80px;
+  font-size: 18px;
+  color: #fff;
+  background: #c7c7c7;
+}
+.oper_nav span{
+  display: block;
+  float: left;
+  margin:26px 0 0 34px;
+  width: 44px;
+  height: 24px;
+  background: url(../img/operation_bg2.png) no-repeat 0 0;
+}
+.oper_nav ul .lop_li03 span{
+  background: url(../img/operation_bg2.png) no-repeat 0 -30px;
+}
+.oper_nav img{
+  position: absolute;
+  bottom: 56px;
+  left: 55px;
+}
+.oper_nav .op_cur h2{
+  background: #288df0;
+}
+.oper_nav .op_cur p{
+  color: #288df0;
+}
+#o01{
+  height: 600px;
+}
+#o02,#o03{
+  height: 620px;
+}
+#o03{
+  height:588px;
+}
+#o04{
+  height: 600px;
+}
+#o05{
+  height: 650px;
+}
+.o_img,.o_exp{
+  float: left;
+}
+.o_img{
+  width: 680px;
+  text-align: center;
+}
+.o_exp{
+  padding-top: 160px;
+  width: 520px;
+}
+.o_tit1{
+  padding-top: 40px;
+  height: 170px;
+  text-align: center;
+  color: #6a6a6a;
+  font-size: 24px;
+  line-height: 48px;
+  background: url(../img/operation_bg19.png) no-repeat center 38px;
+}
+.o_tit1 p{
+  color: #fff;
+  font-size: 18px;、
+}
+.color_28{
+  color: #288df0;
+}
+.img_ul{
+  width: 100%;
+}
+.img_ul li{
+  display: inline-block;
+  vertical-align: bottom;
+  margin:0 6px;
+  text-align:center;
+}
+.img_ul li p{
+    margin-top:20px;
+    text-align:center;
+}
+.img_ul li i{
+  display: inline-block;
+  width: 56px;
+  height: 9px;
+  background:url(../img/operation_bg2.png) no-repeat 0 -60px;
+}
+.colf3{
+  background: #288df0;
+  width: 100%;
+  height: 350px;
+  position: relative;
+}
+.colf3:after{
+  content:'';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -30px;
+  width: 0;
+  height: 0;
+  border: 30px solid transparent;
+  border-top: 30px solid #f9f9f9;
+}
+.colf3 h2{
+  padding-top: 60px;
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+}
+.colf3 ol{
+  height: 32px;
+  width: 240px;
+  margin: 30px auto 48px;
+}
+.colf3 ol li{
+  float: left;
+  width: 80px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  line-height: 32px;
+}
+.colf3 ol li.co_current1{
+  background: yellow;
+  color: #288df0;
+}
+.colf3 .the_last{
+  color: #fff;
+  margin: 0 auto;
+  display: none;
+}
+.colf3 .the_last li{
+  border: 2px dashed #fff;
+  border-radius: 5px;
+}
+.colf3 .the_last .the_left{
+  border: 0;
+  background:url(../img/operation_bg1.png) no-repeat center center;
+}
+.colf3 .now_cur{
+  display: block;
+}
+/* 操作流程 */
