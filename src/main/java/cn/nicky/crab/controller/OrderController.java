@@ -53,6 +53,13 @@ public class OrderController {
         return "success";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/client/json/tracking", method = RequestMethod.GET)
+    public String changeTrackingNubmer(String identityCode, String trackingNumber){
+        orderService.changeTrackingNumber(identityCode, trackingNumber);
+        return "success";
+    }
+
     @RequestMapping(value = "/client/orders", method = RequestMethod.GET)
     public String getOrders(Model model, Integer status, Pageable pageable){
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -85,8 +92,12 @@ public class OrderController {
     public String showVoucherOrderDetail(Model model, @PathVariable String voucherCode){
 
         Voucher voucher = voucherService.findByIdentityCode(voucherCode);
+        int compare = voucher.getActiveDateTime().compareTo(new Date());
+        if(voucher.getStatus() == 0 && compare<0){
+            return "client/voucherOverTime";
+        }
         if(voucher == null){
-            return "client/404";
+            return "client/voucherNotExist.";
         }
         model.addAttribute("voucher", voucher);
 

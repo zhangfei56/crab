@@ -10,6 +10,8 @@
     <title>添加券</title>
     <link rel="stylesheet" href="/css/voucher.css"/>
     <script type="text/javascript" th:src="@{/js/client/addVoucher.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
     <style type="text/css">
         #main-nav li:nth-child(3) a{
             background:#ff7b33;
@@ -28,7 +30,7 @@
                 <a href="/client/voucher/template" class="all_button">查看模板</a>
             </div>
         </div>
-        <div class="all_form">
+        <form class="all_form" id="addVoucherForm">
             <p>
                 <label>类型：</label>
                 <select id="category" class="all_input">
@@ -36,17 +38,17 @@
             </p>
             <p>
                 <label>截至日期：</label>
-                <input type="date" id="voucherCreateDate" class="all_input"/>
+                <input type="date" id="voucherCreateDate" name="voucherCreateDate" class="all_input"/>
             </p>
             <p>
                 <label>张数：</label>
-                <input type="number" id="voucherTotal" class="all_input"/>
+                <input type="number" id="voucherTotal" name="voucherTotal" class="all_input"/>
             </p>
             <p>
                 <label></label>
-                <input type="button" value="提交" onclick="postVoucher()" class="all_button no_border_btn"/>
+                <input type="submit" value="提交" onclick="postVoucher()" class="all_button no_border_btn"/>
             </p>
-        </div>
+        </form>
     </div>
 </div>
 </body>

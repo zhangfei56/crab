@@ -49,8 +49,6 @@ public class MultiHttpSecurityConfig {
             web.ignoring().antMatchers("/**/*.*");
         }
 
-
-
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
             auth.userDetailsService(customUserDetailsService()).passwordEncoder(new PasswordEncoder() {

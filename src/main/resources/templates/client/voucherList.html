@@ -39,6 +39,7 @@
                         <td>券号：</td>
                         <td>规格：</td>
                         <td>创建日期：</td>
+                        <td>截至日期：</td>
                         <td>状态：
                             <input id="voucher_status_id" style="display: none" th:value="${status}"/>
                             <select id="voucher_status_select">
@@ -63,7 +64,8 @@
                         </td>
                         <td th:text="${voucher.identityCode}"></td>
                         <td th:text="${voucher.voucherCategory.detail}"></td>
-                        <td th:text="${voucher.createDateTime}"></td>
+                        <td th:text="${#dates.format(voucher.createDateTime, 'yyyy-MM-dd HH-mm-ss')}"></td>
+                        <td th:text="${#dates.format(voucher.activeDateTime, 'yyyy-MM-dd HH-mm-ss')}"></td>
                         <td th:switch="${voucher.status}">
                             <span th:case="0">创建</span>
                             <span th:case="1">提货</span>

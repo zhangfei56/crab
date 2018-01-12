@@ -36,7 +36,7 @@
                 </p>
                 <p>
                     <label>有效期：</label>
-                    <span th:text=" ${#dates.format(user.expireDate, 'yyyy-MM-dd')}"></span>
+                    <span th:text="${#dates.format(user.expireDate, 'yyyy-MM-dd')}"></span>
                 </p>
 
             </div>
