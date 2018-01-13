@@ -56,7 +56,7 @@
                         <td class="check_box">
                             <input type="checkbox" name="voucher_check"/>
                             <i>✓</i>
-                            <div class="qrcode_td" th:id="'qrcode_'+${voucher.identityCode}" style="display:none"></div>
+                            <div class="qrcode_td" th:id="'http://47.97.165.73/anyone/voucher/order/'+${voucher.identityCode}" style="display:none"></div>
                             <input type="hidden" th:value="${voucher.activeDateTime}"/>
                             <input type="hidden" th:value="${voucher.identityCode}"/>
                             <input type="hidden" th:value="${voucher.voucherCategory.detail}"/>
