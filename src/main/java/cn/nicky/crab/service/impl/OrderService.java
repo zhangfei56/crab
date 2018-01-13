@@ -104,4 +104,11 @@ public class OrderService implements IOrderService {
     public void finishOrder(String identityCode){
         voucherRepository.updateStatus(3, identityCode);
     }
+
+    public void changeTrackingNumber(String identityCode, String trackingNumber){
+        Voucher voucher = voucherRepository.findByIdentityCode(identityCode);
+        OrderForm orderForm = voucher.getOrderForm();
+        orderForm.setTrackingNumber(trackingNumber);
+        orderRepository.save(orderForm);
+    }
 }

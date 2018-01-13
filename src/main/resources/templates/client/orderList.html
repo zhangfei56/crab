@@ -6,6 +6,8 @@
     <meta charset="UTF-8"/>
     <title>我的订单</title>
     <script type="text/javascript" th:src="@{/js/client/orderList.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
     <link rel="stylesheet" href="/css/voucher.css"/>
     <style type="text/css">
         #main-nav li:nth-child(4) a{
@@ -32,12 +34,13 @@
                             <td>预约人：</td>
                             <td>预留电话：</td>
                             <td>预计送到时间：</td>
+                            <td>快递单号：</td>
                             <td>状态：
                                 <input id="voucher_status_id" style="display: none" th:value="${status}"/>
                                 <select id="voucher_status_select">
                                     <option value="-1">全部</option>
-                                    <option value="1">提货</option>
-                                    <option value="2">发货</option>
+                                    <option value="1">已提货,未发货</option>
+                                    <option value="2">已发货</option>
                                     <option value="3">完成</option>
                                 </select>
                             </td>
@@ -52,16 +55,21 @@
                             <td th:text="${order.contact}"></td>
                             <td th:text="${order.phoneNumber}"></td>
                             <td th:text="${order.needDateTime}?${order.needDateTime}:'无'"></td>
+                            <td th:text="${order.trackingNumber}?${order.trackingNumber}:'无'"></td>
                             <td th:switch="${order.voucher.status}">
-                                <span th:case="0">创建</span>
-                                <span th:case="1">提货</span>
-                                <span th:case="2">发货</span>
+                                <span th:case="0">已创建,未提货</span>
+                                <span th:case="1">已提货,未发货</span>
+                                <span th:case="2">已发货</span>
                                 <span th:case="3">完成</span>
                             </td>
                             <td th:switch="${order.voucher.status}">
                                 <span th:case="0">无</span>
                                 <a th:case="1" onclick="openDialog(this)" class="all_button button01">发货</a>
-                                <a th:case="2" onclick="finishOrder(this)" class="all_button button01">完成</a>
+                                <div th:case="2">
+                                    <a onclick="finishOrder(this)" class="all_button button01">完成</a>
+                                    <a onclick="changeTrackingNumber(this)" class="all_button button01">修改快递单号</a>
+                                    <a onclick="getExpressDetail(this)" class="all_button button01">查看物流信息</a>
+                                </div>
                                 <span th:case="3">无</span>
                             </td>
                         </tr>
@@ -75,16 +83,37 @@
         <div>
             <label>运输公司:</label>
             <select id="company_select"></select>
+            <input type="button" value="查看全部快递公司" onclick="getAllCompany()"/>
         </div>
 
         <div>
-            <label>运输号:</label>
-            <input id="tracking_number_input" type="text"/>
+            <form id="orderForm">
+                <label>快递单号:</label>
+                <input id="tracking_number_input" name="tracking_number_input" type="text"/>
+            </form>
         </div>
 
     </div>
+
+    <div id="express_detail_dialog">
+        <table id="show_express_table">
+            <tbody>
+
+            </tbody>
+        </table>
+        <span id="error_express"></span>
+    </div>
+
+    <div id="trackingNumberdDialog">
+        <form id="newTrackingForm">
+            <label>新快递单号：</label>
+            <input type="text" id="newTrackingNumber" name="newTrackingNumber"/>
+        </form>
+
+    </div>
+
     <div id="confirmDialog">
-        <p>are you sure</p>
+        <p>订单确认完成</p>
     </div>
 </body>
 
