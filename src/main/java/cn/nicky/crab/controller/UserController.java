@@ -98,4 +98,9 @@ public class UserController {
     public String error(){
         return "403";
     }
+
+    @RequestMapping("/404")
+    public String notFound(){
+        return "404";
+    }
 }
