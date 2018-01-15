@@ -8,17 +8,19 @@
     <meta name="viewport" content="width=device-width,  user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <title>提货信息</title>
     <link rel="stylesheet" href="/css/voucherOrder.css"/>
+    <script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
     <script type="text/javascript" th:src="@{/js/client/voucherOrder.js}"/>
 </head>
 <body>
     <div class="bg_box">
         <input id="voucher_status" type="hidden" th:value="${voucher.status}"/>
         <input id="identity_code" type="hidden" th:value="${voucher.identityCode}"/>
-        <div th:if="${voucher.status == 0}" class="recruit">
+        <form id="form_address_info" th:if="${voucher.status == 0}" class="recruit">
             <header>填写收货信息</header>
             <p>
                 <label>券号:</label>
-                <input id="code_input" th:disabled="true" type="text" name="voucher.identityCode" th:value="${voucher.identityCode}"/>
+                <input id="code_input" th:disabled="true" type="text" name="code_input" th:value="${voucher.identityCode}"/>
             </p>
             <div>
                 <p>
@@ -39,11 +41,10 @@
                 </p>
                 <p>
                     <label></label>
-                    <input type="submit" value="提交" class="all_button" onclick="sendVoucherOrder()"/>
+                    <input type="submit" value="提交" class="all_button" />
                 </p>
             </div>
-            <footer>Copyright © www.xiangxh.com All rights reserved </footer>
-        </div>
+        </form>
         <div th:if="${voucher.status == 1}" class="waiting">
         </div>
         <div th:if="${voucher.status == 2}">
@@ -57,9 +58,9 @@
         <div th:if="${voucher.status == 3}">
             <header>订单完成</header>
             <div class="order_success">订单完成</div>
-            <footer>Copyright © www.xiangxiehui.com All rights reserved </footer>
         </div>
     </div>
 </body>
+<footer>Copyright © www.xiangxiehui.com All rights reserved </footer>
 
 </html>

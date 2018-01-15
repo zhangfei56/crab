@@ -42,8 +42,3 @@ $(function(){
          $("#category").append(option);
      });
  }
-
- function postVoucher(){
-
-
- }

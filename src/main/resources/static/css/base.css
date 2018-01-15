@@ -242,3 +242,11 @@ label{
 .tipBox-right .tipsBox h1{
 	color: #1aac19;
 }
+.messageSelected{
+    background: blanchedalmond;
+}
+.span_number_red{
+    position:relative;
+    float: right;
+    color: red;
+}

@@ -35,4 +35,6 @@ public interface VoucherRepository extends JpaRepository <Voucher, Integer>{
     @Query(value = "update voucher v set v.status = ?1 where v.identity_code = ?2", nativeQuery = true)
     int updateStatus(int status, String code);
 
+    int countByUserIdAndStatus(Integer userId, Integer status);
+
 }

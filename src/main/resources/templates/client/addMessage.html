@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="client/part/head :: head"></head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>发送消息</title>
+
+    <script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
+    <script type="text/javascript" th:src="@{/js/client/addMessage.js}"/>
+
+</head>
+<body>
+<header id="header" th:replace="client/part/header :: header"></header>
+<div class="bg_box">
+    <h2 class="your_position"> >> 当前位置：发送消息</h2>
+    <div class="bg_inbox">
+
+        <form id="add_message_form" >
+            <div>
+                <select id="add_message_select">
+                </select>
+            </div>
+            <div>
+                <label>标题</label>
+                <input id="add_message_title" name="add_message_title" type="text"/>
+            </div>
+            <div>
+                <label>内容</label>
+                <input id="add_message_content" name="add_message_content" type="text"/>
+            </div>
+            <div>
+                <input type="submit" value="发送"/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

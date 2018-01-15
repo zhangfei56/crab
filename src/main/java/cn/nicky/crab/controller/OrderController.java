@@ -47,6 +47,14 @@ public class OrderController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/client/json/order/count", method = RequestMethod.GET)
+    public int getUnsendOrderCount(){
+        SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return orderService.getUnsendOrderCount(securityUser.getId());
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/client/json/finish/order", method = RequestMethod.GET)
     public String finishDelivery(String identityCode){
         orderService.finishOrder(identityCode);

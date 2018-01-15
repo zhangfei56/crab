@@ -3,6 +3,7 @@ package cn.nicky.crab.controller;
 import cn.nicky.crab.model.po.User;
 import cn.nicky.crab.security.SecurityUser;
 import cn.nicky.crab.service.impl.UserService;
+import com.alibaba.fastjson.JSON;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -67,6 +68,13 @@ public class UserController {
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         return sUserService.checkPassword(securityUser.getUsername(), oldPassword).toString();
+    }
+
+    @RequestMapping(value="/client/json/message/users", method = RequestMethod.GET)
+    @ResponseBody
+    public String getMessageUsers(){
+
+        return JSON.toJSONString(sUserService.getMessageUsers());
     }
 
     @RequestMapping(value="/client/json/user/updatePassword", method = RequestMethod.POST)

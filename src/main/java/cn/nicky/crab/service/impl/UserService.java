@@ -4,6 +4,7 @@ import cn.nicky.crab.model.po.Role;
 import cn.nicky.crab.model.po.Template;
 import cn.nicky.crab.model.po.User;
 import cn.nicky.crab.model.po.Voucher;
+import cn.nicky.crab.model.vo.VUser;
 import cn.nicky.crab.repository.RoleRepository;
 import cn.nicky.crab.repository.TemplateRepository;
 import cn.nicky.crab.repository.UserRepository;
@@ -94,5 +95,18 @@ public class UserService implements IUserService {
         // TODO
         updatePassword(newPassword, phoneNumber);
         return true;
+    }
+
+    public List<VUser> getMessageUsers(){
+        List<User> users = userRepository.findAll();
+        List<VUser> vUsers = new ArrayList<VUser>();
+        for (int i = 0; i < users.size(); i++) {
+            VUser user = new VUser();
+            user.setId(users.get(i).getId());
+            user.setName(users.get(i).getName());
+            vUsers.add(user);
+        }
+        return vUsers;
+
     }
 }

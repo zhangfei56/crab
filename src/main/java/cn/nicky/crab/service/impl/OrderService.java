@@ -111,4 +111,8 @@ public class OrderService implements IOrderService {
         orderForm.setTrackingNumber(trackingNumber);
         orderRepository.save(orderForm);
     }
+
+    public int getUnsendOrderCount(Integer userId){
+        return voucherRepository.countByUserIdAndStatus(userId, 1);
+    }
 }
