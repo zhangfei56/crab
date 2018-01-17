@@ -5,34 +5,43 @@
 <head>
     <meta charset="UTF-8"/>
     <title>发送消息</title>
-
+    <link rel="stylesheet" href="/css/voucher.css"/>
     <script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
     <script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
     <script type="text/javascript" th:src="@{/js/client/addMessage.js}"/>
-
+    <style type="text/css">
+        #main-nav li:nth-child(5) a{
+            background:#ff7b33;
+            color:#fff;
+        }
+    </style>
 </head>
 <body>
 <header id="header" th:replace="client/part/header :: header"></header>
 <div class="bg_box">
     <h2 class="your_position"> >> 当前位置：发送消息</h2>
-    <div class="bg_inbox">
-
-        <form id="add_message_form" >
-            <div>
-                <select id="add_message_select">
+    <div class="bg_inbox m_clear">
+        <div class="bg_title_box">
+            <div class="bg_title pub_left">编辑新消息</div>
+        </div>
+        <form class="all_form" id="add_message_form" >
+            <p>
+                <label>联系人:</label>
+                <select id="add_message_select" class="all_input">
                 </select>
-            </div>
-            <div>
+            </p>
+            <p>
                 <label>标题</label>
-                <input id="add_message_title" name="add_message_title" type="text"/>
-            </div>
-            <div>
+                <input id="add_message_title" class="all_input" name="add_message_title" type="text"/>
+            </p>
+            <p>
                 <label>内容</label>
-                <input id="add_message_content" name="add_message_content" type="text"/>
-            </div>
-            <div>
-                <input type="submit" value="发送"/>
-            </div>
+                <input id="add_message_content" class="all_input" name="add_message_content" type="text"/>
+            </p>
+            <p>
+                <label></label>
+                <input type="submit" value="发送" class="all_button no_border_btn"/>
+            </p>
         </form>
     </div>
 </div>

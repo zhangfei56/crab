@@ -1,19 +1,19 @@
-$(function(){
-
-    if($(".messageSelected").length > 0){
-        var messageSelected = $(".messageSelected").get(0);
-        var url = "/client/message/"+messageSelected.firstElementChild.value;
-        sendMessage(url,"get", function(data){
-            $("#message_content_div").show();
-            var message = JSON.parse(data);
-            $("#message_title").val(message.title);
-            $("#message_content").val(message.text);
-        }, function(error){
-            console.error(error);
-        }, null);
-
-    }
-});
+// $(function(){
+//
+//     if($(".messageSelected").length > 0){
+//         var messageSelected = $(".messageSelected").get(0);
+//         var url = "/client/message/"+messageSelected.firstElementChild.value;
+//         sendMessage(url,"get", function(data){
+//             $("#message_content_div").show();
+//             var message = JSON.parse(data);
+//             $("#message_title").html(message.title);
+//             $("#message_content").html(message.text);
+//         }, function(error){
+//             console.error(error);
+//         }, null);
+//
+//     }
+// });
 
 function jumpIndex(node){
     var value = node.getElementsByClassName("index")[0].textContent-1;

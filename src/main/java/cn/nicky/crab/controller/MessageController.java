@@ -26,14 +26,22 @@ public class MessageController {
     @RequestMapping(value = "/client/messages", method = RequestMethod.GET)
     public String getMessages(Model model, Boolean read, Pageable pageable, Integer currentMessageIndex){
         read = read == null?false: read;
-        currentMessageIndex = currentMessageIndex == null?0:currentMessageIndex;
+        boolean isShow = currentMessageIndex == null? false: true;
 
+        currentMessageIndex = currentMessageIndex == null?0:currentMessageIndex;
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Page<Message> messagePage =messageService.getSelfMessage(securityUser.getId(), read, pageable);
 
         model.addAttribute("datas", messagePage);
         model.addAttribute("currentMessageIndex", currentMessageIndex);
+        model.addAttribute("isShow", isShow);
+        if(isShow){
+
+            model.addAttribute("messageData", messagePage.getContent().get(currentMessageIndex));
+            messageService.getMessageById(messagePage.getContent().get(currentMessageIndex).getId());
+        }
+
         return "client/messageList";
     }
 

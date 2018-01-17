@@ -1,4 +1,4 @@
-body{
+html,body{
     background:#f6f6f6;
 }
 .bg_box{
@@ -8,7 +8,7 @@ body{
  }
  .bg_inbox{
      width:1200px;
-     margin:0 auto;
+     margin:0 auto 40px;
      min-height:500px;
      padding: 22px;
      background: url(../img/act_bj0.png);
@@ -39,6 +39,7 @@ body{
     margin: 30px auto;
     width: 100%;
     max-height: 800px;
+    overflow: auto;
 }
 .pub_table table {
     border-top: 2px solid #dcdcdc;
@@ -55,6 +56,9 @@ body{
 .pub_table table tbody tr{
     height: 40px;
     border-bottom: 1px dotted #dcdcdc;
+}
+.pub_table table tbody tr td{
+     line-height: 20px;
 }
 .pub_table table tbody tr:nth-child(2n){
     background:rgba(255,255,255,.5);
@@ -117,5 +121,48 @@ body{
 #voucher_status_select option{
     height:24px;
     line-height:20px;
-
+}
+.message_cont{
+    margin: 30px 0 0 30px;
+    font-size: 16px;
+    width:46%;
+}
+.message_title{
+    margin-bottom:20px;
+}
+.message_title span{
+    display:inline-block;
+    width:22px;
+    height:20px;
+    background:url(../img/message_list.png) no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+    margin-right:6px;
+}
+.mes_dets{
+    margin-bottom: 10px;
+}
+.mes_dets span{
+    background:url(../img/message_det.png) no-repeat;
+    background-size: contain;
+}
+.vocher_cate span{
+    width: 25px;
+    height: 19px;
+    background:url(../img/add.png) no-repeat;
+    background-size: contain;
+}
+#message_content_div div{
+    line-height: 24px;
+}
+#message_content_div label{
+    color:#ff4200;
+}
+.read{
+    background:url(../img/read.png) no-repeat center center;
+    background-size: 40%;
+}
+.notRead{
+    background:url(../img/unread.png) no-repeat center center;
+    background-size: 40%;
 }

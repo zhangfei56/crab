@@ -5,53 +5,53 @@
 <head>
     <link rel="stylesheet" href="/css/m_action.css"/>
     <title>操作流程</title>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var li02=$('.oper_nav ul li'), f1Top=$('#o01').offset().top-240, f2Top=$('#o02').offset().top-240, f3Top=$('#o03').offset().top-240, f4Top=$('#o04').offset().top-240, f5Top=$('#o05').offset().top-240, f6Top=$('#o06').offset().top-240, f7Top=$('#o07').offset().top-240;
-             li02.click(function() {
-                $(this).addClass('op_cur').siblings('li').removeClass('op_cur');
-                var i=$(this).index();
-                if(i==6){
-                    $('html,body').stop().animate({
-                        'scrollTop':f7Top+120
-                    }, 500);
-                }else if(i==5){
-                    $('html,body').stop().animate({
-                        'scrollTop':f6Top+120
-                    }, 500);
-                }else if(i==4){
-                    $('html,body').stop().animate({
-                        'scrollTop':f5Top+120
-                    }, 500);
-                }else if(i==3){
-                    $('html,body').stop().animate({
-                        'scrollTop':f4Top+120
-                    }, 500);
-                }else if(i==2){
-                    $('html,body').stop().animate({
-                        'scrollTop':f3Top+120
-                    }, 500);
-                }else if(i==1){
-                    $('html,body').stop().animate({
-                        'scrollTop':f2Top+120
-                    }, 500);
-                }else if(i==0){
-                    $('html,body').stop().animate({
-                        'scrollTop':f1Top+120
-                    }, 500);
-                }
-             })
+    <!--<script type="text/javascript">-->
+        <!--$(document).ready(function() {-->
+            <!--var li02=$('.oper_nav ul li'), f1Top=$('#o01').offset().top-240, f2Top=$('#o02').offset().top-240, f3Top=$('#o03').offset().top-240, f4Top=$('#o04').offset().top-240, f5Top=$('#o05').offset().top-240, f6Top=$('#o06').offset().top-240, f7Top=$('#o07').offset().top-240;-->
+             <!--li02.click(function() {-->
+                <!--$(this).addClass('op_cur').siblings('li').removeClass('op_cur');-->
+                <!--var i=$(this).index();-->
+                <!--if(i==6){-->
+                    <!--$('html,body').stop().animate({-->
+                        <!--'scrollTop':f7Top+120-->
+                    <!--}, 500);-->
+                <!--}else if(i==5){-->
+                    <!--$('html,body').stop().animate({-->
+                        <!--'scrollTop':f6Top+120-->
+                    <!--}, 500);-->
+                <!--}else if(i==4){-->
+                    <!--$('html,body').stop().animate({-->
+                        <!--'scrollTop':f5Top+120-->
+                    <!--}, 500);-->
+                <!--}else if(i==3){-->
+                    <!--$('html,body').stop().animate({-->
+                        <!--'scrollTop':f4Top+120-->
+                    <!--}, 500);-->
+                <!--}else if(i==2){-->
+                    <!--$('html,body').stop().animate({-->
+                        <!--'scrollTop':f3Top+120-->
+                    <!--}, 500);-->
+                <!--}else if(i==1){-->
+                    <!--$('html,body').stop().animate({-->
+                        <!--'scrollTop':f2Top+120-->
+                    <!--}, 500);-->
+                <!--}else if(i==0){-->
+                    <!--$('html,body').stop().animate({-->
+                        <!--'scrollTop':f1Top+120-->
+                    <!--}, 500);-->
+                <!--}-->
+             <!--})-->
 
-             var colol=$('.colf3 ol li'), colul=$('.colf3 ul');
-             colol.click(function() {
-                $(this).addClass('co_current1');
-                $(this).siblings().removeClass('co_current1');
-                var n=$(this).index();
-                $(this).parent('ol').siblings('ul').eq(n).addClass('now_cur');
-                $(this).parent('ol').siblings('ul').eq(n).siblings('ul').removeClass('now_cur');
-             })
-         });
-    </script>
+             <!--var colol=$('.colf3 ol li'), colul=$('.colf3 ul');-->
+             <!--colol.click(function() {-->
+                <!--$(this).addClass('co_current1');-->
+                <!--$(this).siblings().removeClass('co_current1');-->
+                <!--var n=$(this).index();-->
+                <!--$(this).parent('ol').siblings('ul').eq(n).addClass('now_cur');-->
+                <!--$(this).parent('ol').siblings('ul').eq(n).siblings('ul').removeClass('now_cur');-->
+             <!--})-->
+         <!--});-->
+    <!--</script>-->
     <style type="text/css">
         #main-nav li:nth-child(2) a{
             background:#ff7b33;

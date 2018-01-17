@@ -185,14 +185,22 @@ label{
     background:none;
 }
 .button01{
-    background: none;
+    background: transparent;
     border: 1px solid #ff7b33;
     color: #ff7b33;
-    padding: 2px 14px;
+    padding: 3px 14px;
+    border-radius: 5px;
 }
 .button01:hover{
     color:#fff;
     background: #ff7b33;
+}
+.allHerf{
+    color: #ff4200;
+    text-decoration: underline;
+}
+.allHerf2{
+    color: #1a6fee;
 }
 /*提示框*/
 .tipsBox{
@@ -245,8 +253,13 @@ label{
 .messageSelected{
     background: blanchedalmond;
 }
-.span_number_red{
-    position:relative;
+.span_number_red{;
     float: right;
-    color: red;
+    color: #d9534f;
+    background: url(../img/tip.png);
+    width: 17px;
+    height: 20px;
+    text-align: center;
+    line-height: 17px;
+    font-size: 12px;
 }

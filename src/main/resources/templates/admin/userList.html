@@ -3,40 +3,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head th:replace="admin/part/head :: head"></head>
-<head><title>customer manager</title></head>
+<head>
+    <title>用户管理</title>
+    <link rel="stylesheet" href="/css/voucher.css"/>
+    <style type="text/css">
+        #main-nav li:nth-child(1) a{
+            background:#ff7b33;
+            color:#fff;
+        }
+    </style>
+</head>
 <body>
 <header id="header" th:replace="admin/part/header :: header"></header>
+<div class="bg_box">
+    <h2 class="your_position"> >> 当前位置：用户管理</h2>
+    <div class="bg_inbox">
+        <div class="bg_title_box">
+            <div class="bg_title pub_left">用户管理</div>
+            <div class="pub_right">
+                <a href="/admin/addUser" class="all_button">添加用户</a>
+            </div>
+        </div>
+        <div class="pub_table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="20%">用户名</th>
+                    <th width="20%">手机号</th>
+                    <th width="20%">注册日期</th>
+                    <th width="20%">有效期</th>
+                    <th width="20%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${datas.getContent()}">
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.phoneNumber}"></td>
+                    <td th:text="${user.registerDate}"></td>
+                    <td th:text="${user.expireDate}"></td>
+                    <td>
+                        <input type="button" value="增加有效期" onclick="" class="all_button button01"/>
+                        <input type="hidden" th:value="${user.id}"/>
+                    </td>
+                </tr>
 
-<div>
-    <div>
-        <a href="/admin/addUser">添加用户</a>
+                </tbody>
+            </table>
+        </div>
+        <div th:include="page :: pager" th:remove="tag"></div>
+
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>用户名：</th>
-                <th>手机号：</th>
-                <th>注册日期：</th>
-                <th>有效期：</th>
-                <th>操作：</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="user : ${datas.getContent()}">
-                <td th:text="${user.name}"></td>
-                <td th:text="${user.phoneNumber}"></td>
-                <td th:text="${user.registerDate}"></td>
-                <td th:text="${user.expireDate}"></td>
-                <td>
-                    <input type="button" value="增加有效期" onclick=""/>
-                    <input type="hidden" th:value="${user.id}"/>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-    <div th:include="page :: pager" th:remove="tag"></div>
-
 </div>
 
 

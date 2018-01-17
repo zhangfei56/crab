@@ -20,7 +20,7 @@
 <header id="header" th:replace="client/part/header :: header"></header>
     <div class="bg_box">
         <h2 class="your_position"> >> 当前位置：我的订单</h2>
-        <div class="bg_inbox">
+        <div class="bg_inbox m_clear">
             <div class="bg_title_box">
                 <div class="bg_title pub_left">我的订单</div>
             </div>
@@ -28,23 +28,23 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>券号：</td>
-                            <td>规格：</td>
-                            <td>创建日期：</td>
-                            <td>预约人：</td>
-                            <td>预留电话：</td>
-                            <td>预计送到时间：</td>
-                            <td>快递单号：</td>
-                            <td>状态：
+                            <td width="8%">券号</td>
+                            <td width="8%">规格</td>
+                            <td width="8%">创建日期</td>
+                            <td width="6%">预约人</td>
+                            <td width="8%">预留电话</td>
+                            <td width="8%">预计送到时间</td>
+                            <td width="14%">快递单号</td>
+                            <td width="12%">状态：
                                 <input id="voucher_status_id" style="display: none" th:value="${status}"/>
                                 <select id="voucher_status_select">
                                     <option value="-1">全部</option>
-                                    <option value="1">已提货,未发货</option>
+                                    <option value="1">待发货</option>
                                     <option value="2">已发货</option>
                                     <option value="3">完成</option>
                                 </select>
                             </td>
-                            <td>操作:</td>
+                            <td width="8%">操作</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,18 +57,17 @@
                             <td th:text="${order.needDateTime}?${order.needDateTime}:'无'"></td>
                             <td th:text="${order.trackingNumber}?${order.trackingNumber}:'无'"></td>
                             <td th:switch="${order.voucher.status}">
-                                <span th:case="0">已创建,未提货</span>
-                                <span th:case="1">已提货,未发货</span>
-                                <span th:case="2">已发货</span>
+                                <span th:case="0">待提货</span>
+                                <span th:case="1">待发货</span>
+                                <span th:case="2">已发货<br/><a onclick="getExpressDetail(this)" class="allHerf" href="javascript:;">查看物流</a></span>
                                 <span th:case="3">完成</span>
                             </td>
                             <td th:switch="${order.voucher.status}">
                                 <span th:case="0">无</span>
                                 <a th:case="1" onclick="openDialog(this)" class="all_button button01">发货</a>
-                                <div th:case="2">
+                                <div th:case="2" style="padding: 2px 0; line-height: 28px;">
+                                    <a onclick="changeTrackingNumber(this)" class="allHerf allHerf2" href="javascript:;">修改单号</a><br/>
                                     <a onclick="finishOrder(this)" class="all_button button01">完成</a>
-                                    <a onclick="changeTrackingNumber(this)" class="all_button button01">修改快递单号</a>
-                                    <a onclick="getExpressDetail(this)" class="all_button button01">查看物流信息</a>
                                 </div>
                                 <span th:case="3">无</span>
                             </td>

@@ -70,10 +70,6 @@ footer{
     background: url(../img/page1.png) repeat-x;
 	background-size: contain;
 	font-size: .6rem;
-	margin-bottom: 0;
-	position: fixed;
-	bottom:0;
-}
 .recruit p{
 	margin:1rem .6rem;
 }
@@ -124,8 +120,8 @@ footer{
 	font-size: 1rem;
 	text-align: center;
 }
-order_over{
-    width: 6rem;
+.order_over{
+     width: 6rem;
      background: url(../img/empty.png) no-repeat center center;
      background-size: contain;
 }

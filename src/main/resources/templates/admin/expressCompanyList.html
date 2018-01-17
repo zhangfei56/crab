@@ -1,43 +1,53 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-
 <head th:replace="admin/part/head :: head"></head>
-<head><title>customer manager</title></head>
+<head>
+    <title>快递公司管理</title>
+    <link rel="stylesheet" href="/css/voucher.css"/>
+    <script type="text/javascript" th:src="@{/js/admin/company.js}"/>
+    <style type="text/css">
+        #main-nav li:nth-child(3) a{
+            background:#ff7b33;
+            color:#fff;
+        }
+    </style>
+</head>
 <body>
 <header id="header" th:replace="admin/part/header :: header"></header>
-<script type="text/javascript" th:src="@{/js/admin/company.js}"/>
+<div class="bg_box">
+    <h2 class="your_position"> >> 当前位置：快递公司管理</h2>
+    <div class="bg_inbox m_clear">
+        <div class="bg_title_box">
+            <div class="bg_title pub_left">快递公司管理</div>
+        </div>
+        <div class="pub_table">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="20%">公司名称:</th>
+                        <th width="20%">类型：</th>
+                        <th width="20%">电话：</th>
+                        <th width="20%">常用：</th>
+                        <th width="20%">操作:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="company : ${companies}">
+                        <td th:text="${company.name}"></td>
+                        <td th:text="${company.type}"></td>
+                        <td th:text="${company.tel}"></td>
+                        <td th:text="${company.common}?'是':'否'"></td>
+                        <td>
+                            <input type="button" value="改变状态" onclick="changeStatus(this)" class="all_button button01"/>
+                            <input type="hidden" th:value="${company.id}"/>
+                        </td>
+                    </tr>
 
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>公司名称:</th>
-                <th>类型：</th>
-                <th>电话：</th>
-                <th>常用：</th>
-                <th>操作:</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="company : ${companies}">
-                <td th:text="${company.name}"></td>
-                <td th:text="${company.type}"></td>
-                <td th:text="${company.tel}"></td>
-                <td th:text="${company.common}?'是':'否'"></td>
-                <td>
-                    <input type="button" value="改变状态" onclick="changeStatus(this)"/>
-                    <input type="hidden" th:value="${company.id}"/>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-
-<footer id="footer" th:replace="admin/part/footer :: footer"></footer>
-
 </body>
 
 </html>

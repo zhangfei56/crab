@@ -3,41 +3,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head th:replace="admin/part/head :: head"></head>
-<head><title>customer manager</title></head>
+<head>
+    <title>提货券规格管理</title>
+    <link rel="stylesheet" href="/css/voucher.css"/>
+    <script type="text/javascript" th:src="@{/js/admin/voucherCategory.js}"/>
+    <style type="text/css">
+        #main-nav li:nth-child(2) a{
+            background:#ff7b33;
+            color:#fff;
+        }
+    </style>
+</head>
 <body>
 <header id="header" th:replace="admin/part/header :: header"></header>
-<script type="text/javascript" th:src="@{/js/admin/voucherCategory.js}"/>
+<div class="bg_box">
+    <h2 class="your_position"> >> 当前位置：提货券规格管理</h2>
+    <div class="bg_inbox m_clear">
+        <div class="bg_title_box">
+            <div class="bg_title pub_left">提货券规格管理</div>
+        </div>
+        <div class="pub_table pub_left" style="width: 50%; margin: 30px 0;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>详情</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="category : ${categories}">
+                        <td th:text="${category.detail}"></td>
+                        <td>
+                            <input type="button" value="删除" onclick="deleteCategory(this)" class="all_button button01"/>
+                            <input type="hidden" th:value="${category.id}"/>
+                        </td>
+                    </tr>
 
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>详情:</th>
-                <th>操作:</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="category : ${categories}">
-                <td th:text="${category.detail}"></td>
-                <td>
-                    <input type="button" value="删除" onclick="deleteCategory(this)"/>
-                    <input type="hidden" th:value="${category.id}"/>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
-
-    <div>
-        <p>添加券类型</p>
-        <label>券类型</label>
-        <input id="category_id_input" type="text"/>
-        <input type="button" value="添加" onclick="addCategory()"/>
-    </div>
+                </tbody>
+            </table>
+        </div>
+        <div class="pub_left message_cont">
+            <h3 class="message_title vocher_cate"><span></span>添加提货券规格</h3>
+            <div class="all_form" style="padding:0;margin-left: -36px;">
+                <p><label>券类型：</label><input id="category_id_input" type="text" class="all_input"/></p>
+                <p><label></label><input type="button" value="添加" style="margin-top: 0;" onclick="addCategory()" class="all_button no_border_btn"/></p>
+            </div>
+        </div>
 </div>
 
-
-<footer id="footer" th:replace="admin/part/footer :: footer"></footer>
+</div>
 
 </body>
 
