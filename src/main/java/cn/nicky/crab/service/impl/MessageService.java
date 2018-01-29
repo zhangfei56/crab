@@ -4,6 +4,7 @@ import cn.nicky.crab.model.po.*;
 import cn.nicky.crab.repository.*;
 import cn.nicky.crab.service.IMessageService;
 import cn.nicky.crab.service.IOrderService;
+import cn.nicky.crab.util.MsgManager;
 import cn.nicky.crab.util.SyncCourierApiClient;
 import com.alibaba.cloudapi.sdk.core.model.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class MessageService implements IMessageService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private MsgManager msgManager;
 
     public Page<Message> getSelfMessage(Integer userId, Boolean read, Pageable pageable){
 

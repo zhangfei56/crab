@@ -16,3 +16,7 @@ securerandom.source=file:/dev/random
 ?
 1
 securerandom.source=file:/dev/./urandom
+
+
+
+¥Ú”° √Êµ• http://open.taobao.com/docs/doc.htm?spm=a219a.7629140.0.0.SPevXb&treeId=17&articleId=105113&docType=1

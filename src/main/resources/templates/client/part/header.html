@@ -12,7 +12,7 @@
             <ul class="m_clear">
                 <li ><a href="/index">首页</a></li>
                 <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/action">操作流程</a></li>
-                <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/vouchers?status=-1&amp;size=10">提货券</a></li>
+                <li th:if="${isNotMember == null ?true: !isNotMember}"><a href="/client/vouchers?status=-1">提货券</a></li>
                 <li th:if="${isNotMember == null ?true: !isNotMember}">
                     <span id="order_number_span" class="span_number_red"></span>
                     <a href="/client/orders?status=-1">我的订单</a>
