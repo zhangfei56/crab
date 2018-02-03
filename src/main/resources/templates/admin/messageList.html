@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="admin/part/head :: head"></head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>消息</title>
+    <link rel="stylesheet" href="/css/voucher.css"/>
+    <script type="text/javascript" th:src="@{/js/client/message.js}"/>
+    <style type="text/css">
+        #main-nav li:nth-child(5) a{
+            background:#ff7b33;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<header id="header" th:replace="admin/part/header :: header"></header>
+<div class="bg_box">
+
+    <h2 class="your_position"> >> 当前位置：消息提醒</h2>
+    <div class="bg_inbox m_clear">
+        <div class="bg_title_box">
+            <div class="bg_title pub_left">我的消息</div>
+            <div class="pub_right">
+                <a href="/client/message" class="all_button">发送信息</a>
+            </div>
+        </div>
+        <div class="pub_table pub_left" style="width: 30%; margin: 30px 0;">
+            <h3 class="message_title"><span></span>消息列表</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>发消息人</td>
+                    <td>发送时间</td>
+                    <td>状态</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="message, status:${datas.getContent()}" th:class="${status.index == currentMessageIndex}?'messageSelected':''"  onclick="jumpIndex(this)">
+                    <input type="hidden" th:value="${message.id}"/>
+                    <td th:text="${status.index}+1" class="index"></td>
+                    <td th:text="${message.sendUser.name}"></td>
+                    <td th:text="${#dates.format(message.sendDate, 'yyyy-MM-dd HH-mm-ss')}"></td>
+                    <td th:class="${message.read}? 'read':'notRead'"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div th:include="page :: pager" th:remove="tag"></div>
+        </div>
+        <div th:if="${isShow}" id="message_content_div" class="message_cont pub_left">
+            <h3 class="message_title mes_dets"><span></span>消息详情</h3>
+            <div>
+                <label>标题：</label>
+                <span id="message_title" th:text="${messageData.title}"></span>
+            </div>
+            <div>
+                <label>内容：</label>
+                <span id="message_content" th:text="${messageData.text}"></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

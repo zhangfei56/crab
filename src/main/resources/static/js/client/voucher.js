@@ -48,7 +48,7 @@ function generatePic(){
     zip.generateAsync({type:"blob"})
     .then(function(content) {
         // see FileSaver.js
-        saveAs(content, "example.zip");
+        saveAs(content, "xiangxiehui.zip");
     });
 
 }
