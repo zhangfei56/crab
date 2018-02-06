@@ -1,14 +1,24 @@
 function destoryInviteCode(spanNode){
-    var inviteCode= spanNode.parentNode.parentNode.parentNode.firstElementChild.textContent;
-    $("#express_detail_dialog").dialog("open");
-    var url = "/anyone/express/"+identityCode;
-    sendMessage(url, "get", expressCallback, function(error){
-        var errorJson = JSON.parse(error.responseText);
-        $("#error_express").text(errorJson.msg);
+    var inviteCode= spanNode.nextElementSibling.value;
+    var url = "/admin/invite/destroy?inviteId="+inviteCode;
+    sendMessage(url, "get", function(data){
+            if(data =="success"){
+                    window.location.reload();
+            }
+        }, function(error){
+            alert(error);
     }, null);
 
 }
 
 function generateInviteCode(){
 
+    sendMessage("/admin/invite/add", "get", function(data){
+            if(data =="success"){
+                window.location.reload();
+            }
+        }, function(error){
+            alert(error);
+
+        }, null);
 }

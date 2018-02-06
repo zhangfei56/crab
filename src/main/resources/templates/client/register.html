@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="client/part/head :: head"></head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册</title>
+    <link rel="stylesheet" href="/css/voucher.css"/>
+    <link rel="stylesheet" href="/css/verify.css"/>
+
+    <script type="text/javascript" th:src="@{/js/lib/jquery.validate.min.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/messages_zh.js}"/>
+    <script type="text/javascript" th:src="@{/js/lib/verify.js}"/>
+    <script type="text/javascript" th:src="@{/js/client/register.js}"/>
+
+</head>
+<body>
+    <form class="all_form" id="register_form">
+
+        <!--<h3>点选验证码</h3>-->
+        <!--<div id="mpanel5" style="margin-top:50px;">-->
+        <!--</div>-->
+
+        <p><label> 用户名: </label><input type="text" class="all_input" id="userName" name="user_name"/></p>
+
+        <div class="div-phone"><p><label> 手机号: </label><input type="text" class="all_input" id="phone_number" name="phone_number"/></p></div>
+
+        <p><label> 手机验证码: </label><input type="text" class="all_input" placeholder="请输入验证码" id="phone_number_verify" name="phone_number_verify"/>
+            <button id="sendVerifyCode" class="canSend" onclick="sendRegisterCode()">发送邀请码</button>
+        </p>
+
+        <p><label> 邀请码: </label><input type="text" class="all_input" id="invite_code" name="invite_code"/></p>
+
+        <p><label> 密码: </label><input type="text" class="all_input" id="pre_password" name="pre_password"/></p>
+
+        <p><label> 确认密码: </label><input type="text" class="all_input" id="password" name="password"/></p>
+
+        <p><label></label><input type="submit" value="提交"  class="all_button no_border_btn"/></p>
+
+    </form>
+</body>
+
+
+<footer id="footer" th:replace="client/part/footer :: footer"></footer>
+
+</html>

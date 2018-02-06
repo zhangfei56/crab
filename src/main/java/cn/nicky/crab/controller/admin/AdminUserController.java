@@ -54,8 +54,8 @@ public class AdminUserController {
     @ResponseBody
     @RequestMapping(value = "/admin/user/phone", method = RequestMethod.GET)
     public String chenkPhoneNumber(String phone_number){
-        String ss=sUserService.checkPhoneNumber(phone_number).toString();
-        return ss;
+        String mark=sUserService.checkPhoneNumber(phone_number).toString();
+        return mark;
     }
 
     @PreAuthorize("hasRole('ADMIN')")

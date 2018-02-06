@@ -2,8 +2,10 @@ package cn.nicky.crab.controller;
 
 import cn.nicky.crab.model.po.User;
 import cn.nicky.crab.security.SecurityUser;
+import cn.nicky.crab.service.impl.InviteService;
 import cn.nicky.crab.service.impl.UserService;
 import com.alibaba.fastjson.JSON;
+import com.aliyuncs.exceptions.ClientException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,6 +26,9 @@ public class UserController {
 
     @Resource
     private UserService sUserService;
+
+    @Resource
+    private InviteService inviteService;
 
     @RequestMapping("/login")
     public String login(){
@@ -54,12 +59,23 @@ public class UserController {
         return "client/user";
     }
 
-
-
     @RequestMapping("/client/action")
     public String action() {
 
         return "client/action";
+    }
+
+    @RequestMapping(value = "/client/register", method = RequestMethod.GET)
+    public String registerPage() {
+
+        return "client/register";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/client/register", method = RequestMethod.POST)
+    public String register(User user) {
+        sUserService.addUser(user);
+        return "success";
     }
 
     @RequestMapping(value="/client/json/user/checkPassword", method = RequestMethod.GET)
@@ -92,6 +108,35 @@ public class UserController {
         boolean isNotMember = securityUser.toString().equals("anonymousUser");
         model.addAttribute("isNotMember", isNotMember);
         return "client/index";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/anyone/registerCode/send", method = RequestMethod.GET)
+    public String sendRegisterCode(String phoneNumber) throws ClientException{
+        sUserService.sendRegisterCodeToPhone(phoneNumber);
+
+        return "success";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/anyone/check/phone", method = RequestMethod.GET)
+    public String chenkPhoneNumber(String phone_number){
+        String mark=sUserService.checkPhoneNumber(phone_number).toString();
+        return mark;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/anyone/check/invite", method = RequestMethod.GET)
+    public String chenkInviteCode(String invite_code){
+        String mark=inviteService.checkInvitationCode(invite_code).toString();
+        return mark;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/anyone/check/phoneVerify", method = RequestMethod.GET)
+    public String chenkPhoneNumberVerify(String phoneNumber, String phone_number_verify){
+        String mark = sUserService.checkRegisterCode(phoneNumber, phone_number_verify).toString();
+        return mark;
     }
 
     @RequestMapping("/403")

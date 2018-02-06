@@ -25,8 +25,9 @@ public class MultiHttpSecurityConfig {
                     .authorizeRequests()
                     .antMatchers("/anyone/**").permitAll()
                     .antMatchers("/wx/**").permitAll()
-
                     .antMatchers("/login").permitAll()
+                    .antMatchers("/client/register").permitAll()
+
                     .antMatchers("/welcome").permitAll()
                     .antMatchers("/index").permitAll()
                     .anyRequest()

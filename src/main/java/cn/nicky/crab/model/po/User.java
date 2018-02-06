@@ -39,6 +39,8 @@ public class User{
     @Column
     private String headPic;
 
+    private String invitationCode;
+
     @Column(name=" image_code", columnDefinition="Blob")
     private byte[] imageCode;
 
@@ -47,6 +49,14 @@ public class User{
     public List<Role> roles;
 
     public User() {
+    }
+
+    public String getInvitationCode() {
+        return invitationCode;
+    }
+
+    public void setInvitationCode(String invitationCode) {
+        this.invitationCode = invitationCode;
     }
 
     public byte[] getImageCode() {

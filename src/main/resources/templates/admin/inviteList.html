@@ -5,6 +5,8 @@
 <head th:replace="admin/part/head :: head"></head>
 <head>
     <title>邀请码管理</title>
+    <link rel="stylesheet" href="/css/voucher.css"/>
+
     <style type="text/css">
         #main-nav li:nth-child(1) a{
             background:#ff7b33;
@@ -22,21 +24,20 @@
         <div class="bg_title_box">
             <div class="bg_title pub_left">邀请码管理</div>
             <div class="pub_right">
-                <a href="/admin/addInvite" class="all_button">邀请码</a>
-                <button value="生成邀请码" onclick="generateInviteCode()"/>
+                <button  onclick="generateInviteCode()">生成邀请码</button>
             </div>
         </div>
         <div class="pub_table">
             <table>
                 <thead>
                 <tr>
-                    <th width="20%">邀请码</th>
-                    <th width="20%">创建用户</th>
-                    <th width="20%">创建日期</th>
-                    <th width="20%">邀请用户</th>
-                    <th width="20%">使用日期</th>
+                    <th width="10%">邀请码</th>
+                    <th width="15%">创建用户</th>
+                    <th width="15%">创建日期</th>
+                    <th width="15%">邀请用户</th>
+                    <th width="15%">使用日期</th>
                     <th >作废</th>
-                    <th width="20%">操作</th>
+                    <th width="10%">操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,7 +45,7 @@
                     <td th:text="${invite.code}"></td>
                     <td th:text="${invite.createBy.name}"></td>
                     <td th:text="${invite.createDate}"></td>
-                    <td th:text="${invite.inviteUser.name}"></td>
+                    <td th:text="${invite.inviteUser == null? '空': invite.inviteUser.name}"></td>
                     <td th:text="${invite.useDate}"></td>
                     <td th:text="${invite.markForDelete}? '是':'否'"></td>
                     <td>

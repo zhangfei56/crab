@@ -25,13 +25,12 @@ public class MsgManager {
     //产品域名,开发者无需替换
     static final String domain = "dysmsapi.aliyuncs.com";
 
-    // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
     static final String accessKeyId = "LTAI8DtzX3xT6XIs";
     static final String accessKeySecret = "HNsfDQ04tE8SVVcUhGNQnzEK6pBrHj";
 
 
-    //模板CODE SMS_123666900 注册
-    //
+    //模板CODE SMS_123666900 注册成功
+    //SMS_125020614 注册验证码
     public static SendSmsResponse sendSms(String phoneNumber, String templateCode, String content) throws ClientException {
 
         //可自助调整超时时间
